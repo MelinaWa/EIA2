@@ -1,0 +1,56 @@
+@charset "ISO-8859-1";
+/* Aufgabe: 0
+Name: Melina Wald 
+Matrikel: 259225
+Datum: 06.10.2018
+Hiermit versichere ich, dass ich diesen
+Code selbst geschrieben habe. Er wurde
+nicht kopiert und auch nicht diktiert. */
+
+body {  
+    font-family: 'Roboto Mono', monospace;
+    border-style: solid;
+    box-shadow: 2px 3px 5px 1px #c0c0c0;
+    border-color: #ffffff;
+    text-align: center;
+	background-color: #fafafa;
+	margin: 10em;
+}
+button {
+	background-color: #ffffff;
+  	border: dotted;
+  	border-width: 2px;
+  	border-color: #c0c0c0; 
+  	color: #000000;
+  	text-align: center;
+  	font-size: 18pt;
+  	font-color: grey; 
+  	margin: 0.4em;
+	}
+a:hover {
+  	color: #808080;
+  	text-decoration: none;
+  	font-weight: #808080;
+  	font-color: grey;
+}
+h1 {  
+	
+    font-size: 20pt; 
+    font-color: #808080;  
+    }
+a:link {
+	color: #000000;
+	text-decoration: none;
+	}
+a:visited {
+	color: #000000;
+	}
+	
+a:hover {
+	color: #808080;
+	
+	}
+	
+
+	
+    
