@@ -1,6 +1,8 @@
+namespace Aufg0 {
+      
 var i : string ="";
         
-	function main() {
+	function hallo() {
         var i = prompt("Wie heisst du?");
         var node : any = document.getElementById("cont");
         node.innerHTML += "Hallo ";
@@ -9,4 +11,5 @@ var i : string ="";
         console.log("Hallo",i,", schoen dich zu sehen.");
         }
     
-    document.addEventListener('DOMContentLoaded',main);
+    document.addEventListener('DOMContentLoaded',hallo);
+}

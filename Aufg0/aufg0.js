@@ -1,11 +1,14 @@
-var i = "";
-function main() {
-    var i = prompt("Wie heisst du?");
-    var node = document.getElementById("cont");
-    node.innerHTML += "Hallo ";
-    node.innerHTML += i;
-    node.innerHTML += ", schoen dich zu sehen.";
-    console.log("Hallo", i, ", schoen dich zu sehen.");
-}
-document.addEventListener('DOMContentLoaded', main);
+var Aufg0;
+(function (Aufg0) {
+    var i = "";
+    function hallo() {
+        var i = prompt("Wie heisst du?");
+        var node = document.getElementById("cont");
+        node.innerHTML += "Hallo ";
+        node.innerHTML += i;
+        node.innerHTML += ", schoen dich zu sehen.";
+        console.log("Hallo", i, ", schoen dich zu sehen.");
+    }
+    document.addEventListener('DOMContentLoaded', hallo);
+})(Aufg0 || (Aufg0 = {}));
 //# sourceMappingURL=aufg0.js.map
