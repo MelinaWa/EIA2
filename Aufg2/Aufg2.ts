@@ -179,7 +179,7 @@ namespace Aufgabe2 {
             s.height = 200 + "px";
             s.left = n * 110 + "px";
             s.bottom = 40 + "px";
-            if (colour == "#000000") {
+            if (colour == "black") {
                 s.color = "white";
             }
         }

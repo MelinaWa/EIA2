@@ -150,7 +150,7 @@ var Aufgabe2;
             s.height = 200 + "px";
             s.left = n * 110 + "px";
             s.bottom = 40 + "px";
-            if (c == "black") {
+            if (colour == "black") {
                 s.color = "white";
             }
         }
