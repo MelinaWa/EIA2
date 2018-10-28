@@ -1,0 +1,40 @@
+@charset "ISO-8859-1";
+
+#Cards {
+	borderRadius: 10px;
+	fontSize: 1em;
+	textAlign: "center";
+	position: "absolute";
+	background-Color: #aaaacc;
+	width: 100px;
+	height: 200px;
+	left: n* 110px;
+	bottom: 40px;
+}
+
+#Ablagestapel {
+	width: 180px;
+	height: 280px;
+	top: 30px;
+	right: 100px;
+	borderRadius: 5px;
+	fontSize: 1.5em;
+	border: "outset black";
+	color: "black";
+	textAlign: "center";
+	position: "absolute";
+	background-Color: "#aaaacc";
+}
+
+#Nachziehbereich {
+	width: 180 px;
+	height: 280 px;
+	left: 30 px;
+	top: 30 px;
+	borderRadius: 5 px;
+	fontSize: 1.5 em;
+	border: "outset black";
+	textAlign: "center";
+	position: "absolute";
+	background-Color: "#aaaacc";
+}
