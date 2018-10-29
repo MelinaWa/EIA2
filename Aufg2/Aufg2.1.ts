@@ -10,9 +10,10 @@ namespace UNO {
         color: string;
         value: string;
     }
-    let colors: string[] = ["red", "green", "blue", "yellow"];
+    let colors: string[] = ["red", "green", "blue", "yellow"]; 
+    // Array für alle doppelten Karten (zb. rote 3) 
     let values: string[] = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "+2", "X", "<=>"];
-    let cards: Card[] =
+    let cards: Card[] = // Array für alle einzelnen Karten, später sollen hier alle Karten reingepusht werden
         [{ color: "red", value: "0" },
             { color: "blue", value: "0" },
             { color: "green", value: "0" },
@@ -44,20 +45,21 @@ namespace UNO {
         let x: number = parseInt(kartenanzahl);
     
 
-    for (let anz: number = x; anz > 0; anz--) {
-        let r: number = Math.floor(Math.random() * (cards.length - 1));
-        handcards.push(cards[r]);
-        cards.splice(r, 1);
+    for (let anz: number = x; anz > 0; anz--) { // Anzahl die wir bei prompt eingegeben haben wird 
+                                                // bei jedem Durchlauf um 1 abgezogen 
+        let r: number = Math.floor(Math.random() * (cards.length - 1)); // Karte wird aus cards gelöscht
+        handcards.push(cards[r]); // wird in handcards Array gepusht 
+        cards.splice(r, 1); // An der Position r wird die nächste Karte abgezogen
     }
 
-    for (let h: number = 0; h < handcards.length; h++) {
-        let div: HTMLElement = document.createElement("div");
-        document.getElementById("Cards").appendChild(div);
-        div.innerHTML = handcards[h].value;
-        div.classList.add("Cards");
-        div.classList.add(handcards[h].color); 
+    for (let h: number = 0; h < handcards.length; h++) { // h = rechne solange bis die Anzahl der Länge des Arrays erreicht ist 
+        let div: HTMLElement = document.createElement("div"); // erstelle mir im html ein div
+        document.getElementById("Cards").appendChild(div); // Kind erstellen für id Cards 
+        div.innerHTML = handcards[h].value; // schreibe mir die Werte der Handkarten in meine divs rein
+        div.classList.add("Cards"); // Klasse erstellen (für Farben im CSS) 
+        div.classList.add(handcards[h].color); // füge den zufällig gewählten Farben der Handkarten die richtige Farbe hinzu 
     }
 
 }
-    document.addEventListener("DOMContentLoaded", (unokarten));
+    document.addEventListener("DOMContentLoaded", (unokarten)); 
 }

@@ -160,38 +160,12 @@ namespace Aufgabe2 {
         function randomKarte(i: number) {
             return Math.floor(Math.random() * Math.floor(i)); // automatische Generierung der Karten
         };
-
-        function placeDiv(c: string, i: string, n: number): void { // Karte besteht aus c,i,n
-
-            let div: HTMLDivElement = document.createElement("div");
-            document.body.appendChild(div);
-            div.setAttribute("id", "attr" + n) //div bekommt ID für die Gest
-            document.getElementById("attr" + n).innerHTML += i; //Zugriff auf ID (i für Text)
-
-            let s: CSSStyleDeclaration = div.style;
-            s.border = "outset black"
-            s.borderRadius = 10 + "px";
-            s.fontSize = 1 + "em";
-            s.textAlign = "center";
-            s.position = "absolute";
-            s.backgroundColor = colour;
-            s.width = 100 + "px";
-            s.height = 200 + "px";
-            s.left = n * 110 + "px";
-            s.bottom = 40 + "px";
-            if (colour == "black") {
-                s.color = "white";
-            }
-        }
-
+       
         let colour: string = ""; // Farbe s.u.
 
         let x: number;
         let input: string = prompt("Wie viele Karten moechtest du?"); // Abfrage an Spieler
         x = Number(input); // Input (Nummer) wird an x übergeben 
-
-
-
 
         for (let o: number = 0; o < x; o++) { // Wie viele Karten zum Spielen 
             let u: number = randomKarte(15); // zufällige Auswahl der Karten 
@@ -244,57 +218,8 @@ namespace Aufgabe2 {
                         continue
                     }
 
-            }
 
-        }
-
-
-        function AblageStapel() {// Funktion Erstellung durch div : Ablagestapel 
-            let div = document.createElement("div");
-            document.body.appendChild(div);
-            div.setAttribute("id", "Ablagestapel");
-            document.getElementById("Ablagestapel").innerHTML += "Ablagestapel";
-            let s = div.style;
-            s.width = 180 + "px";
-            s.height = 280 + "px";
-            s.top = 30 + "px";
-            s.right = 100 + "px";
-            s.borderRadius = 5 + "px";
-            s.fontSize = 1.5 + "em";
-            s.border = "outset black"
-            s.color = "black"
-            s.textAlign = "center";
-            s.position = "absolute";
-            s.backgroundColor = "#aaaacc";
-
-
-        }
-
-        function Nachziehbereich() { // Funktion Erstellung durch div : Nachziehbereich
-            let div = document.createElement("div");
-            document.body.appendChild(div);
-            div.setAttribute("id", "Nachziehbereich");
-            document.getElementById("Nachziehbereich").innerHTML += "Nachziehbereich";
-
-            let s = div.style;
-            s.width = 180 + "px";
-            s.height = 280 + "px";
-            s.left = 30 + "px";
-            s.top = 30 + "px";
-            s.borderRadius = 5 + "px";
-            s.fontSize = 1.5 + "em";
-            s.border = "outset black";
-            s.textAlign = "center";
-            s.position = "absolute";
-            s.backgroundColor = "#aaaacc";
-
-
-        }
-
-        AblageStapel();
-        Nachziehbereich();
-        //Aufruf der Funktionen
-    }
-
-    document.addEventListener("DOMContentLoaded", (UNO));
 }
+    document.addEventListener("DOMContentLoaded", (UNO)); 
+}
+    }}

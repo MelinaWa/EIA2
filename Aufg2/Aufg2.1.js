@@ -7,6 +7,7 @@ Er wurde nicht kopiert und auch nicht diktiert. */
 var UNO;
 (function (UNO) {
     let colors = ["red", "green", "blue", "yellow"];
+    // Array f�r alle doppelten Karten (zb. rote 3) 
     let values = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "+2", "X", "<=>"];
     let cards = [{ color: "red", value: "0" },
         { color: "blue", value: "0" },
@@ -34,16 +35,17 @@ var UNO;
         let kartenanzahl = prompt("Wie viele Karten?");
         let x = parseInt(kartenanzahl);
         for (let anz = x; anz > 0; anz--) {
-            let r = Math.floor(Math.random() * (cards.length - 1));
-            handcards.push(cards[r]);
-            cards.splice(r, 1);
+            // bei jedem Durchlauf um 1 abgezogen 
+            let r = Math.floor(Math.random() * (cards.length - 1)); // Karte wird aus cards gel�scht
+            handcards.push(cards[r]); // wird in handcards Array gepusht 
+            cards.splice(r, 1); // An der Position r wird die n�chste Karte abgezogen
         }
         for (let h = 0; h < handcards.length; h++) {
-            let div = document.createElement("div");
-            document.getElementById("Cards").appendChild(div);
-            div.innerHTML = handcards[h].value;
-            div.classList.add("Cards");
-            div.classList.add(handcards[h].color);
+            let div = document.createElement("div"); // erstelle mir im html ein div
+            document.getElementById("Cards").appendChild(div); // Kind erstellen f�r id Cards 
+            div.innerHTML = handcards[h].value; // schreibe mir die Werte der Handkarten in meine divs rein
+            div.classList.add("Cards"); // Klasse erstellen (f�r Farben im CSS) 
+            div.classList.add(handcards[h].color); // f�ge den zuf�llig gew�hlten Farben der Handkarten die richtige Farbe hinzu 
         }
     }
     document.addEventListener("DOMContentLoaded", (unokarten));

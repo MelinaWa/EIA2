@@ -1,41 +1,79 @@
 @charset "ISO-8859-1";
 
-#Cards {
-	borderRadius: 10px;
-	fontSize: 1em;
-	textAlign: "center";
-	position: "absolute";
-	background-Color: #aaaacc;
-	width: 100px;
-	height: 200px;
-	left: n* 110px;
-	bottom: 40px;
-}
-
 #Ablagestapel {
 	width: 180px;
 	height: 280px;
-	top: 30px;
-	right: 100px;
 	borderRadius: 5px;
 	fontSize: 1.5em;
-	border: "outset black";
-	color: "black";
-	textAlign: "center";
-	position: "absolute";
-	background-Color: "#aaaacc";
+	border: outset black;
+	color: black;
+	textAlign: center;
+	position: absolute;
+	background-color: #c0c0c0;
+	right: 0px;
+	top: 10px;
 }
 
 #Nachziehbereich {
-	width: 180 px;
-	height: 280 px;
-	left: 30 px;
-	top: 30 px;
-	borderRadius: 5 px;
-	fontSize: 1.5 em;
-	border: "outset black";
-	textAlign: "center";
-	position: "absolute";
-	background-Color: "#aaaacc";
+	width: 180px;
+	height: 280px;
+	left: 0px;
+	top: 10px;
+	borderRadius: 5px;
+	fontSize: 1.5em;
+	border: outset black;
+	textAlign: center;
+	position: absolute;
+	background-Color: #c0c0c0;
 }
-. 
+#Cards {
+	width: 100%;
+	height: 200px;
+	bottom: 0px;
+	position: absolute;
+}
+.Cards {
+	display: inline-block;
+	bottom:0px; 
+	margin: 5px;
+	}
+	
+.yellow
+	{
+	background: yellow;
+	width: 180px;
+	height: 280px;
+	border-Radius: 8px;
+	}
+
+.black
+	{background: black;
+	width: 180px;
+	height: 280px;
+	color:white;
+	border-Radius: 8px;
+}
+.red{
+	background: red;
+	width: 180px;
+	height: 280px;
+	border-Radius: 8px;
+
+	}
+
+.blue{
+	background: blue;
+	width: 180px;
+	height: 280px;
+	border-Radius: 8px;
+	
+}
+
+.green{background: green;
+	width: 180px;
+	height: 280px;
+	border-Radius: 8px;
+
+	}
+	
+
