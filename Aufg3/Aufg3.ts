@@ -63,8 +63,6 @@ namespace UNO3 {
         let cardtotake: HTMLElement = document.getElementById("Nachziehstapel");
         cardtotake.addEventListener("click", takecard); // Nachziehehen
 
-        /*  let cardtotake: HTMLElement = document.getElementById("Ablagestapel");
-          cardtotake.addEventListener("click", takeCard); // Ablegen */
     }
 
     //random

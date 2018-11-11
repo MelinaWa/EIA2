@@ -44,8 +44,6 @@ var UNO3;
         sortbycolor.addEventListener("click", sortcards); // button
         let cardtotake = document.getElementById("Nachziehstapel");
         cardtotake.addEventListener("click", takecard); // Nachziehehen
-        /*  let cardtotake: HTMLElement = document.getElementById("Ablagestapel");
-          cardtotake.addEventListener("click", takeCard); // Ablegen */
     }
     //random
     function random(x) {
