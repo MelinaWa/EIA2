@@ -1,0 +1,94 @@
+@charset "ISO-8859-1";
+
+#Ablagestapel {
+	width: 180px;
+	height: 280px;
+	borderRadius: 5px;
+	fontSize: 1.5em;
+	border: outset black;
+	color: black;
+	textAlign: center;
+	position: absolute;
+	background-color: #c0c0c0;
+	right: 0px;
+	top: 10px;
+}
+
+#Nachziehstapel {
+	width: 180px;
+	height: 280px;
+	left: 0px;
+	top: 10px;
+	borderRadius: 5px;
+	fontSize: 1.5em;
+	border: outset black;
+	textAlign: center;
+	position: absolute;
+	background-Color: #c0c0c0;
+}
+#Cards {
+	width: 100%;
+	height: 200px;
+	bottom: 0px;
+	position: absolute;
+}
+.Cards {
+	display: inline-block;
+	bottom:0px; 
+	margin: 5px;
+	}
+	
+.yellow
+	{
+	background: yellow;
+	width: 180px;
+	height: 280px;
+	border-Radius: 8px;
+	}
+
+.black
+	{background: black;
+	width: 180px;
+	height: 280px;
+	color:white;
+	border-Radius: 8px;
+}
+.red{
+	background: red;
+	width: 180px;
+	height: 280px;
+	border-Radius: 8px;
+
+	}
+
+.blue{
+	background: blue;
+	width: 180px;
+	height: 280px;
+	border-Radius: 8px;
+	
+}
+
+.green{background: green;
+	width: 180px;
+	height: 280px;
+	border-Radius: 8px;
+
+	}
+	
+#sortcards {
+	position: absolute;
+	bottom: 200px;
+	left: 20px;
+	text-align: center;
+	background-color: white;
+	color: black;
+	width: 77px;
+	height: 48px;
+	border-style: solid;
+	
+}
+#sortcards:hover {
+	background-color: #c0c0c0;
+	transition-duration: 0.4s;
+}
