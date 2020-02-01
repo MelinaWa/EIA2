@@ -13,10 +13,10 @@ var L_10;
         let horizon = crc2.canvas.height * goldencut;
         let posMountains = { x: 0, y: horizon };
         drawBackground();
-        drawSun({ x: 100, y: 75 });
-        drawCloud({ x: 400, y: 125 }, { x: 250, y: 75 });
-        drawCloud({ x: 750, y: 110 }, { x: 200, y: 85 });
-        drawCloud({ x: 1000, y: 140 }, { x: 220, y: 55 });
+        drawSun({ x: 1200, y: 75 }); // Pos. 
+        drawCloud({ x: 200, y: 125 }, { x: 250, y: 75 }); // Pos. & Größe
+        drawCloud({ x: 550, y: 110 }, { x: 200, y: 85 });
+        drawCloud({ x: 900, y: 140 }, { x: 220, y: 55 });
         drawMountains(posMountains, 75, 200, "grey", "white");
         drawMountains(posMountains, 50, 150, "grey", "lightgrey");
         drawSnowman({ x: 800, y: 500 }, { x: 800, y: 430 }, { x: 800, y: 370 });
@@ -27,11 +27,8 @@ var L_10;
         drawTree5({ x: 0, y: 300 });
         drawTree6({ x: 15, y: 350 });
         drawBirdhouse({ x: 200, y: 400 });
-        // drawflyingBird({ x: 600, y: 100 });
         drawstandingBird({ x: 340, y: 230 });
         drawstandingBird1({ x: 240, y: 230 });
-        // drawflyingBirds({ x: 20, y: 20}, { x: canvas.width -90, y: canvas.height -480})
-        // drawSnow ({ x: 0, y: 700 }, { x: 1200, y: 700 });
         crc2.save();
         L_10.image = crc2.getImageData(0, 0, canvas.width, canvas.height);
     }
@@ -46,15 +43,15 @@ var L_10;
     }
     function drawSun(_position) {
         console.log("Background", _position);
-        let r1 = 30;
-        let r2 = 150;
-        let gradient = crc2.createRadialGradient(0, 0, r1, 0, 0, r2);
+        let radius1 = 30;
+        let radius2 = 150;
+        let gradient = crc2.createRadialGradient(0, 0, radius1, 0, 0, radius2);
         gradient.addColorStop(0, "HSLA(40, 100%, 75%, 1)");
         gradient.addColorStop(1, "HSLA(40, 100%, 50%, 0)");
         crc2.save();
         crc2.translate(_position.x, _position.y);
         crc2.fillStyle = gradient;
-        crc2.arc(0, 0, r2, 0, 2 * Math.PI);
+        crc2.arc(0, 0, radius2, 0, 2 * Math.PI);
         crc2.fill();
         crc2.restore();
     }
@@ -300,78 +297,6 @@ var L_10;
         crc2.restore();
         crc2.closePath();
     }
-    /*  function drawflyingBird(_position: Vector): void {
-          //birdhead
-          crc2.save();
-          crc2.translate(_position.x, _position.y);
-          crc2.beginPath();
-          crc2.arc(-25,20,15, 0, 2 * Math.PI);
-          crc2.fillStyle = "#af8a54";
-          crc2.fill();
-          crc2.restore();
-          crc2.closePath();
-          //eye
-          crc2.save();
-          crc2.translate(_position.x, _position.y);
-          crc2.beginPath();
-          crc2.arc(-30,13, 3, 0, 2 * Math.PI);
-          crc2.fillStyle = "#3673a4";
-          crc2.fill();
-          crc2.restore();
-          crc2.closePath();
-          //bill//Schnabel
-          crc2.save();
-          crc2.translate(_position.x, _position.y);
-          crc2.beginPath();
-          crc2.moveTo(-36, 10);
-          crc2.lineTo(-50, 1);
-          crc2.lineTo(-40, 17);
-          crc2.fillStyle = getRandomColor();
-          crc2.fill();
-          crc2.restore();
-          crc2.closePath();
-          //body
-          crc2.save();
-          crc2.translate(_position.x, _position.y);
-          crc2.beginPath();
-          crc2.ellipse(0, 30, 30, 15, Math.PI / 1, 0, 2 * Math.PI);
-          crc2.fillStyle = getRandomColor();
-          crc2.fill();
-          crc2.restore();
-          crc2.closePath();
-          
-          //wings
-          crc2.save();
-          crc2.translate(_position.x, _position.y);
-          crc2.beginPath();
-          crc2.moveTo(15, 20);
-          crc2.lineTo(-15, 20);
-          crc2.lineTo(-2, 50);
-          crc2.fillStyle = "#af8a54";
-          crc2.fill();
-          crc2.restore();
-          crc2.closePath();
-          
-      }
-  
-        function drawflyingBirds(_start: Vector, _border: Vector): void {
-          for (let i: number = 0; i < 20; i++){
-              let x: number = _start.x + Math.random() * _border.x;
-              let y: number = _start.y + Math.random() * _border.y;
-              drawflyingBird({x, y});
-          }
-      }
-  
-      function getRandomColor(): string {
-          var letters = '0123456789ABCDEF'.split('');
-          var color = '#';
-          for (var i = 0; i < 6; i++ ) {
-              color += letters[Math.round(Math.random() * 15)];
-          }
-          return color;
-      }
-  
-  */
     function drawstandingBird(_position) {
         //head
         crc2.save();
@@ -736,26 +661,5 @@ var L_10;
         crc2.restore();
         crc2.closePath();
     }
-    /* function drawSnow(_position: Vector, _size: Vector): void {
-        console.log("Snow", _position, _size);
-    
-        let nParticles: number = 400;
-        let particle: Path2D = new Path2D();
-    
-        particle.arc(0, 0, 2, 0, 2 * Math.PI);
-        crc2.save();
-        crc2.translate(_position.x, _position.y);
-        crc2.fillStyle = "white";
-    
-        for (let drawn: number = 0; drawn < nParticles; drawn++) {
-            crc2.save();
-            let x: number = (Math.random()) * _size.x;
-            let y: number = - (Math.random() * _size.y);
-            crc2.translate(x, y);
-            crc2.fill(particle);
-            crc2.restore();
-        }
-    }
-    */
 })(L_10 || (L_10 = {}));
 //# sourceMappingURL=Canvas.js.map

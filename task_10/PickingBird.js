@@ -1,7 +1,7 @@
 "use strict";
 var L_10;
 (function (L_10) {
-    class Bird extends L_10.Moveable {
+    class PickingBird extends L_10.Moveable {
         constructor(_size, _position) {
             super(_position); // ruft die Position aus der Moveable auf - wieso?
             this.size = 2;
@@ -36,16 +36,6 @@ var L_10;
             L_10.crc2.restore();
             L_10.crc2.closePath();
             //bill//Schnabel
-            L_10.crc2.save();
-            L_10.crc2.translate(this.position.x, this.position.y);
-            L_10.crc2.beginPath();
-            L_10.crc2.moveTo(-36, 10);
-            L_10.crc2.lineTo(-50, 1);
-            L_10.crc2.lineTo(-40, 17);
-            L_10.crc2.fillStyle = this.billcolor;
-            L_10.crc2.fill();
-            L_10.crc2.restore();
-            L_10.crc2.closePath();
             //body
             L_10.crc2.save();
             L_10.crc2.translate(this.position.x, this.position.y);
@@ -74,7 +64,7 @@ var L_10;
             //Entfernung vertikal & horizontal */
         }
     }
-    L_10.Bird = Bird;
+    L_10.PickingBird = PickingBird;
     function getRandomColor() {
         var letters = '0123456789ABCDEF'.split('');
         var color = '#';
@@ -84,4 +74,4 @@ var L_10;
         return color;
     }
 })(L_10 || (L_10 = {}));
-//# sourceMappingURL=Bird.js.map
+//# sourceMappingURL=PickingBird.js.map

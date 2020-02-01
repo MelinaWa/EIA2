@@ -2,6 +2,7 @@ namespace L_10 {
         export class Vector {
             x: number;
             y: number;
+            
     
             constructor(_x: number, _y: number) {
                 this.set(_x, _y);
@@ -34,6 +35,8 @@ namespace L_10 {
                 // neue Positionsobjekte bewegen sich unabh. voneinander
                 let vector: Vector = new Vector(this.x, this.y);
                 return vector;
-            }
+            } 
         }
+
+        
     }

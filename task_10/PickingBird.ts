@@ -1,5 +1,5 @@
 namespace L_10 {
-    export class Bird extends Moveable {
+    export class PickingBird extends Moveable {
 
         position: Vector;
         velocity: Vector;
@@ -49,16 +49,7 @@ namespace L_10 {
             crc2.restore();
             crc2.closePath();
             //bill//Schnabel
-            crc2.save();
-            crc2.translate(this.position.x, this.position.y);
-            crc2.beginPath();
-            crc2.moveTo(-36, 10);
-            crc2.lineTo(-50, 1);
-            crc2.lineTo(-40, 17);
-            crc2.fillStyle = this.billcolor;
-            crc2.fill();
-            crc2.restore();
-            crc2.closePath();
+            
             //body
             crc2.save();
             crc2.translate(this.position.x, this.position.y);
