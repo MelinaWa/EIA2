@@ -23,11 +23,12 @@ namespace L_10 {
                 this.position = new Vector(Math.random() * crc2.canvas.width, Math.floor(Math.random() * 400));
     // Math Random für Verteilung Breite * Höhe Canvas, Wert (größten & aufgerundet) * random Nr *600 (Verteilung auf Höhe des Canvas)
 
-            this.velocity = new Vector(Math.random() -1 * 7,(Math.random() * 2 + Math.random() - 2));
+            this.velocity = new Vector(Math.random() -1 * 4,(Math.random() * 2 + Math.random() - 2));
     // -1 = vorwärts, 7 = Geschw. -2 und +2 (gehen langsam hoch und runter)
 
         }
 
+        
         draw(): void {
 
             //birdhead

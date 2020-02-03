@@ -34,7 +34,7 @@ namespace L_10 {
             crc2.fill();
             crc2.restore();
             crc2.closePath();
-            console.log(this.size);
+            // console.log(this.size);
             
 
         }

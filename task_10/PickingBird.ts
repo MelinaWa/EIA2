@@ -10,8 +10,8 @@ namespace L_10 {
         constructor(_size: number, _position?: Vector) { // position muss nicht genutzt werden, ist optional
 
 
-            super(_position); // ruft die Position aus der Moveable auf - wieso?
-            console.log("Bird constructor");
+           super (_position); // ruft die Position aus der Moveable auf - wieso?
+            console.log("picking Bird constructor");
 
             this.bodycolor = getRandomColor();
             this.billcolor = getRandomColor();
@@ -34,8 +34,8 @@ namespace L_10 {
             crc2.save();
             crc2.translate(this.position.x, this.position.y);
             crc2.beginPath();
-            crc2.arc(-25, 20, 15, 0, 2 * Math.PI);
-            crc2.fillStyle = "#af8a54";
+            crc2.arc(-25, 20, 15, 0, 4 * Math.PI);
+            crc2.fillStyle = "blue";
             crc2.fill();
             crc2.restore();
             crc2.closePath();
@@ -61,16 +61,7 @@ namespace L_10 {
             crc2.closePath();
 
             //wings
-            crc2.save();
-            crc2.translate(this.position.x, this.position.y);
-            crc2.beginPath();
-            crc2.moveTo(15, 20);
-            crc2.lineTo(-15, 20);
-            crc2.lineTo(-2, 50);
-            crc2.fillStyle = "#af8a54";
-            crc2.fill();
-            crc2.restore();
-            crc2.closePath();
+            
 
         }
 

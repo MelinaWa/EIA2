@@ -24,7 +24,7 @@ var L_10;
             L_10.crc2.fill();
             L_10.crc2.restore();
             L_10.crc2.closePath();
-            console.log(this.size);
+            // console.log(this.size);
         }
     }
     L_10.Snowball = Snowball;

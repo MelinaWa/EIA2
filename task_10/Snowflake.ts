@@ -14,7 +14,7 @@ namespace L_10 {
             else
                 this.position = new Vector(Math.random()*crc2.canvas.width, Math.random()*crc2.canvas.height);
                 
-                this.velocity = new Vector(0,Math.random()+ 1*1);
+                this.velocity = new Vector(1, Math.random()+ 1*1);
             this.size = _size;
         }
 

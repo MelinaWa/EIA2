@@ -9,7 +9,7 @@ var L_10;
                 this.position = _position;
             else
                 this.position = new L_10.Vector(Math.random() * L_10.crc2.canvas.width, Math.random() * L_10.crc2.canvas.height);
-            this.velocity = new L_10.Vector(0, Math.random() + 1 * 1);
+            this.velocity = new L_10.Vector(1, Math.random() + 1 * 1);
             this.size = _size;
         }
         draw() {

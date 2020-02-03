@@ -7,7 +7,6 @@ namespace L_10 {
 
     let snowflakeArray: Snowflake[] = [];
     let birdArray: Bird[] = [];
-    let pickingBirdArray: PickingBird[] = [];
     let throwSnowball: Snowball;
     let throwBirdfood: Birdfood;
     let bird: Bird; //Vielleicht wieder ändern
@@ -21,7 +20,8 @@ namespace L_10 {
         crc2 = <CanvasRenderingContext2D>canvas.getContext("2d");
 
         canvas.addEventListener("click", handleClick);
-        canvas.addEventListener("contextmenu", handleClickRight);
+        canvas.addEventListener("keyup", handleClickRight);
+        
 
 
         for (let i: number = 0; i < 20; i++) {
@@ -35,89 +35,96 @@ namespace L_10 {
             // console.log("new flake");
             snowflakeArray.push(snowflake);
 
-        for (let i: number = 0; i < 20; i++) {
-            let pickingbird: PickingBird = new PickingBird(2);
-            pickingBirdArray.push(pickingbird);
 
+        }
+
+        image = crc2.getImageData(0, 0, 1200, 700);
+        window.setInterval(update, 20);
+
+        function update(): void {
+            // console.log("Update");
+            crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
+            // console.log (image);
+            crc2.putImageData(image, 0, 0);
+
+
+            for (let i: number = 0; i < birdArray.length; i++) {
+                birdArray[i].draw();
+                birdArray[i].move(1);
             }
 
-            image = crc2.getImageData(0, 0, 1200, 700);
-            window.setInterval(update, 20);
-            // window.setTimeout (getbirdHit, 40000);
+            for (let i: number = 0; i < snowflakeArray.length; i++) {
+                snowflakeArray[i].draw();
+                snowflakeArray[i].move(1);
+            }
 
-            function update(): void {
-                // console.log("Update");
-                crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
-                // console.log (image);
-                crc2.putImageData(image, 0, 0);
+            if (throwSnowball) {
+                throwSnowball.draw();
+            }
 
-                for (let i: number = 0; i < pickingBirdArray.length; i++) {
-                    pickingBirdArray[i].draw();
-                    pickingBirdArray[i].move(100);
-                }
-
-
-                for (let i: number = 0; i < birdArray.length; i++) {
-                    birdArray[i].draw();
-                    birdArray[i].move(100);
-                }
-
-                for (let i: number = 0; i < snowflakeArray.length; i++) {
-                    snowflakeArray[i].draw();
-                    snowflakeArray[i].move(100);
-                }
-
-                
-                if (throwSnowball)
-                    throwSnowball.draw();
-
-                if (throwBirdfood)
-                    throwBirdfood.draw();
-
-
+            if (throwBirdfood) {
+                throwBirdfood.draw();
             }
 
         }
 
-        function handleClickRight(_event: MouseEvent): void {
-            console.log(_event);
-            let birdfoodVector: Vector = new Vector(_event.offsetX, _event.offsetY);
-            throwBirdfood = new Birdfood(3, birdfoodVector);
+        function handleClickRight(_event: KeyboardEvent): void {
+                    
+        
+        if (_event.keyCode === 32) {
+            console.log("leertaste", _event);
+         //   let birdfoodVector: Vector = new Vector(_event.offsetX, _event.offsetY);
+          //  throwBirdfood = new Birdfood(4, birdfoodVector);
+
+
+}
+
 
         }
 
 
-        function handleClick(_event: MouseEvent): void {
+        function handleClick (_event: MouseEvent): void {
             console.log(_event);
             let snowballVector: Vector = new Vector(_event.offsetX, _event.offsetY);
             //offset gibt die Werte relativ zum Dokument zurück (beim Scrollen)
-            throwSnowball = new Snowball(5, snowballVector);
+            throwSnowball = new Snowball(6, snowballVector);
 
+            window.setTimeout (getbirdHit, 500, snowballVector); // Parameter übergeben
 
-            let birdHit: Bird | null = getbirdHit(snowballVector);
-            if (birdHit)
-                deleteBird(birdHit);
-            console.log("Vogel löschen")
+            //getbirdHit(snowballVector);
+
         }
 
+        function getbirdHit(_hotspot: Vector): void {
 
-        function getbirdHit(_hotspot: Vector): Bird | null {
+            console.log("Hotspot und BirdArray");
+            console.log(_hotspot);
+            console.log(birdArray);
+
             for (let bird of birdArray) {
-                if (bird.isHit(_hotspot))
 
-                    return bird;
-
+                if (bird.isHit(_hotspot)) {
+                    deleteBird(bird);
+                    return;
+                }
             }
-
-            return null;
         }
 
         function deleteBird(_bird: Bird): void {
+            console.log("Vogel löschen")
 
             let index: number = birdArray.indexOf(_bird);
             birdArray.splice(index, 1);
+            if (birdArray.length == 0) {
+                location.replace("Endscreen.html");
+
+            }
 
         }
 
+
     }
-}
+} 
+
+
+

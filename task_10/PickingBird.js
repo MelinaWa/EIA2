@@ -5,7 +5,7 @@ var L_10;
         constructor(_size, _position) {
             super(_position); // ruft die Position aus der Moveable auf - wieso?
             this.size = 2;
-            console.log("Bird constructor");
+            console.log("picking Bird constructor");
             this.bodycolor = getRandomColor();
             this.billcolor = getRandomColor();
             if (_position)
@@ -21,8 +21,8 @@ var L_10;
             L_10.crc2.save();
             L_10.crc2.translate(this.position.x, this.position.y);
             L_10.crc2.beginPath();
-            L_10.crc2.arc(-25, 20, 15, 0, 2 * Math.PI);
-            L_10.crc2.fillStyle = "#af8a54";
+            L_10.crc2.arc(-25, 20, 15, 0, 4 * Math.PI);
+            L_10.crc2.fillStyle = "blue";
             L_10.crc2.fill();
             L_10.crc2.restore();
             L_10.crc2.closePath();
@@ -46,16 +46,6 @@ var L_10;
             L_10.crc2.restore();
             L_10.crc2.closePath();
             //wings
-            L_10.crc2.save();
-            L_10.crc2.translate(this.position.x, this.position.y);
-            L_10.crc2.beginPath();
-            L_10.crc2.moveTo(15, 20);
-            L_10.crc2.lineTo(-15, 20);
-            L_10.crc2.lineTo(-2, 50);
-            L_10.crc2.fillStyle = "#af8a54";
-            L_10.crc2.fill();
-            L_10.crc2.restore();
-            L_10.crc2.closePath();
         }
         isHit(_hotspot) {
             let hitsize = this.size * 20; // radius, indem sie getroffen werden
