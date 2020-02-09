@@ -1,0 +1,72 @@
+div {
+
+	border-style: solid;
+	margin: 1em 15em 15em 15em;
+	border-radius: 3px;
+	border-color: transparent;
+	background: #3673a4;
+}
+
+h1 {
+	font-size: 4em;
+	color: #ffffff;
+	text-align: center;
+	font-family: 'Bebas Neue', cursive;
+	letter-spacing: 0.05em;
+
+}
+
+#text1 {
+
+	font-size: 2em;
+	color: #ffffff;
+	text-align: center;
+	font-family: 'Bebas Neue', cursive;
+	letter-spacing: 0.02em;
+	border-style: solid;
+	margin: 1em 5em 1em 5em;
+}
+
+#text2 {
+	font-size: 2em;
+	color: #ffffff;
+	text-indent: 2em;
+	text-align: left;
+	font-family: 'Bebas Neue', cursive;
+	letter-spacing: 0.04em;
+	margin: 1em 5em -1em 5em;
+}
+
+button {
+	text-align: center;
+	margin: 5em 1em 1em 5em;
+	box-shadow: inset 1px 14px 14px -1px #ffffff;
+	background-color: rgb(255, 255, 255);
+	border-radius: 19px;
+	border: 3px solid #dcdcdc;
+	display: inline-block;
+	color: #666666;
+	font-family: Trebuchet MS;
+	font-size: 18px;
+	font-weight: bold;
+	padding: 7px 100px;
+	text-decoration: none;
+	text-shadow: 0px 0px 0px #ffffff;
+	cursor: pointer;
+	opacity: 0.8;
+	transition: 0.3s;
+
+}
+
+button:hover {
+	opacity: 1.2
+}
+
+input {
+	font-size: 2em;
+	color: #666666;
+	text-align: left;
+	font-family: 'Bebas Neue', cursive;
+	letter-spacing: 0.04em;
+
+}
