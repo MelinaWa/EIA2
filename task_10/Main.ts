@@ -2,24 +2,24 @@ namespace L_10 {
 
     window.addEventListener("load", handleLoad);
 
-
-
     export let crc2: CanvasRenderingContext2D;
 
     let snowflakeArray: Snowflake[] = [];
     let birdArray: Bird[] = [];
     let snowball: Snowball;
     let birdfood: Birdfood;
-    let fps: number = 30;
+    let fps: number = 20;
     let score: number = 5000;
     // let response: Response = await fetch("Data.json");
     // let offer: string = await response.text();
     // let data: Data = JSON.parse(offer);
-    let submit: HTMLButtonElement = <HTMLButtonElement>document.querySelector("button[type=submit]");
 
-    function handleLoad(_event: Event): void {
-        //async function handleLoad(_event: Event): Promise<void> {
-
+    // function handleLoad(_event: Event): void {
+        
+    async function handleLoad(_event: Event): Promise<void> {
+        let submit: HTMLButtonElement = <HTMLButtonElement>document.querySelector("button[type=submit]");
+        submit.addEventListener("click", sendNameScore);
+        
         console.log("starting");
         let canvas: HTMLCanvasElement | null = document.querySelector("canvas");
         if (!canvas)
@@ -28,21 +28,16 @@ namespace L_10 {
 
         canvas.addEventListener("click", handleClick);
         canvas.addEventListener("contextmenu", handleClickRight);
-        submit.addEventListener("click", sendNameScore); // sucht button in html und installiert click listener darauf
+        
 
-        function sendNameScore(_event: MouseEvent): void {
-            console.log("NAME UND SCORE")
-        }
 
         for (let i: number = 0; i < 20; i++) {
             let bird: Bird = new Bird(2);
-            // console.log("new bird");
             birdArray.push(bird);
         }
 
         for (let u: number = 0; u < 120; u++) {
             let snowflake: Snowflake = new Snowflake(1.5);
-            // console.log("new flake");
             snowflakeArray.push(snowflake);
 
         }
@@ -59,10 +54,6 @@ namespace L_10 {
 
         function update(): void {
 
-
-            // console.log("Update");
-            // crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
-            // console.log (image);
             crc2.putImageData(image, 0, 0);
 
 
@@ -91,10 +82,10 @@ namespace L_10 {
 
                 if (birdfood.size <= 2 && birdfood.size >= 0.005)
                     birdfood.size -= 0.005;
-                if  (birdfood.position.y < birdfood.foodPosition) {
-                     birdfood.move(1);
+                if (birdfood.position.y < birdfood.foodPosition) {
+                    birdfood.move(1);
 
-            }
+                }
 
 
             }
@@ -102,6 +93,10 @@ namespace L_10 {
 
 
         }
+    }
+
+    function sendNameScore(_event: MouseEvent): void {
+        console.log("NAME UND SCORE")
     }
 
 
@@ -121,46 +116,11 @@ namespace L_10 {
 
     }
 
-    function handleClickRight(_event: MouseEvent): void {
-
-
-        console.log(_event);
-        let birdfoodVector: Vector = new Vector(_event.offsetX, _event.offsetY);
-        birdfood = new Birdfood(2, birdfoodVector);
-
-
-        for (let bird of birdArray) {
-            if (birdIsNear(bird.position)) {
-                bird.job = TASK.FLYTOFOOD; //vllt this.job
-                bird.velocity = Vector.getDifference(new Vector(birdfood.position.x + Math.random() * (20 - 10) + 20, birdfood.foodPosition), bird.position);
-                bird.velocity.scale(0.01); //Strecke wird in Bereiche unterteilt
-                setTimeout(bird.isEating, 100 * fps); // wird mit scale multipliziert damit das 1 ergibt
-                // angegebene Zahl lässt Vogel auf dem Vektor entlangfliegen --> muss mulitpliziert mit scale = 1 sein
-
-
-                if (bird.velocity.x != 0) {
-                    bird.job = TASK.EAT;
-
-                }
-
-            }
-        }
-
-    }
-
-    function birdIsNear(_hotspot: Vector): boolean {
-
-        let nearsize: number = 100;
-        let getDifference: Vector = Vector.getDifference(_hotspot, new Vector(birdfood.position.x, birdfood.foodPosition));
-        return (nearsize > getDifference.length); //vllt >= 
-
-    }
-
     function getbirdHit(_hotspot: Vector): void { //_ wenns von außen kommt
 
         for (let bird of birdArray) {
 
-            if (bird.isHit(_hotspot)) {
+            if (bird.birdIsHit(_hotspot)) {
                 deleteBird(bird);
                 return;
             }
@@ -179,6 +139,43 @@ namespace L_10 {
 
         }
     }
+
+    function handleClickRight(_event: MouseEvent): void {
+
+
+        console.log(_event);
+        let birdfoodVector: Vector = new Vector(_event.offsetX, _event.offsetY);
+        birdfood = new Birdfood(2, birdfoodVector);
+
+
+        for (let bird of birdArray) {
+            if (birdIsNear(bird.position)) {
+                bird.job = TASK.FLYTOFOOD; //vllt this.job
+                bird.velocity = Vector.getDifference(new Vector(birdfood.position.x + Math.random() * (10 - 10) + 10, birdfood.foodPosition), bird.position);
+                bird.velocity.scale(0.01); //Strecke wird in Bereiche unterteilt
+                setTimeout(bird.isEating, 100 * fps); // wird mit scale multipliziert damit das 1 ergibt
+                // angegebene Zahl lässt Vogel auf dem Vektor entlangfliegen --> muss mulitpliziert mit scale = 1 sein
+
+
+                if (bird.velocity.x != 0) {
+                    bird.job = TASK.EAT;
+
+                }
+
+            }
+        }
+
+    }
+
+    function birdIsNear(_hotspot: Vector): boolean { // in main sonst wird in handleClickRight die Funktion nicht mehr gefunden
+
+        let nearsize: number = 200;
+        let getDifference: Vector = Vector.getDifference(_hotspot, new Vector(birdfood.position.x, birdfood.foodPosition));
+        return (nearsize > getDifference.length); //vllt >= 
+
+    }
+
+    
 
 
 }
