@@ -1,24 +1,25 @@
 {
-  "name": "eia2",
+  "name": "endabgabe",
   "version": "1.0.0",
-  "description": "",
-  "main": "",
+  "main": "index.js",
   "scripts": {
-    "start": "node C:/Users/Melina/Desktop/HS/EIA2_neu/EIA2-Inverted-master/X01_Appendix/Code/Aufgaben_Melina/Database2.js"
+    "start": "node ./task_10/Database2.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MelinaWa/EIA2"
+    "url": "git+https://github.com/MelinaWa/EIA2.git"
   },
   "author": "Melina Wald",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/MelinaWa/EIA2"
   },
-  "homepage": "",
+  "homepage": "https://github.com/MelinaWa/EIA2#readme",
   "dependencies": {
-    "@types/mongodb": "^3.3.1",
+    "@types/mongodb": "^3.3.15",
     "@types/node": "^13.7.0",
-    "mongodb": "^3.3.2"
-  }
+    "mongodb": "^3.5.2"
+  },
+  "devDependencies": {},
+  "description": ""
 }

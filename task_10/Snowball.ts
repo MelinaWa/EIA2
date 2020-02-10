@@ -3,7 +3,7 @@ namespace L_10 {
     export class Snowball /*extends Moveable*/ {
 
         public position: Vector;
-        protected velocity: Vector; //wieso nicht private?
+       // protected velocity: Vector; 
         public size: number;
 
         public constructor(_size: number, _position: Vector) {
@@ -13,6 +13,7 @@ namespace L_10 {
             (_position)
             this.position = _position;
             this.size = _size;
+            
             console.log("Snowball constructor");
 
         }

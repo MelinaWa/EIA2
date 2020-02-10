@@ -1,7 +1,7 @@
 namespace L_10 {
 
     window.addEventListener("load", handleLoad);
-    
+
 
 
     export let crc2: CanvasRenderingContext2D;
@@ -12,8 +12,14 @@ namespace L_10 {
     let birdfood: Birdfood;
     let fps: number = 30;
     let score: number = 5000;
+    // let response: Response = await fetch("Data.json");
+    // let offer: string = await response.text();
+    // let data: Data = JSON.parse(offer);
+    let submit: HTMLButtonElement = <HTMLButtonElement>document.querySelector("button[type=submit]");
 
     function handleLoad(_event: Event): void {
+        //async function handleLoad(_event: Event): Promise<void> {
+
         console.log("starting");
         let canvas: HTMLCanvasElement | null = document.querySelector("canvas");
         if (!canvas)
@@ -22,16 +28,14 @@ namespace L_10 {
 
         canvas.addEventListener("click", handleClick);
         canvas.addEventListener("contextmenu", handleClickRight);
-        
+        submit.addEventListener("click", sendNameScore); // sucht button in html und installiert click listener darauf
 
-        //  let submit: HTMLButtonElement = <HTMLButtonElement>document.querySelector("button[type=button]");
-        // console.log (submit);
-        // sucht button in html und installiert click listener darauf
-
-        // submit.addEventListener("click", sendScore);
+        function sendNameScore(_event: MouseEvent): void {
+            console.log("NAME UND SCORE")
+        }
 
         for (let i: number = 0; i < 20; i++) {
-            let bird:Bird = new Bird(2);
+            let bird: Bird = new Bird(2);
             // console.log("new bird");
             birdArray.push(bird);
         }
@@ -53,11 +57,9 @@ namespace L_10 {
         image = crc2.getImageData(0, 0, 1320, 725);
         window.setInterval(update, 20);
 
-
-
         function update(): void {
 
-            
+
             // console.log("Update");
             // crc2.clearRect(0, 0, crc2.canvas.width, crc2.canvas.height);
             // console.log (image);
@@ -78,9 +80,9 @@ namespace L_10 {
                 snowball.draw();
                 if (snowball.size >= 0.2)
                     snowball.size -= 0.2;
-                }
-    
-            
+            }
+
+
 
             if (birdfood) {
                 birdfood.draw();
@@ -89,40 +91,44 @@ namespace L_10 {
 
                 if (birdfood.size <= 2 && birdfood.size >= 0.005)
                     birdfood.size -= 0.005;
-                   
-         
-                     } 
-                     
-                         
+                if  (birdfood.position.y < birdfood.foodPosition) {
+                     birdfood.move(1);
 
             }
-        }
-                    
 
-        function handleClick(_event: MouseEvent): void {
 
-            score --;
+            }
 
-            console.log(_event);
-            let snowballVector: Vector = new Vector(_event.offsetX, _event.offsetY);
-            //offset gibt die Werte relativ zum Dokument zurück (beim Scrollen)
-            snowball = new Snowball(6, snowballVector);
-
-            window.setTimeout(getbirdHit, 400, snowballVector); // Parameter übergeben
-
-            //getbirdHit(snowballVector);
 
 
         }
+    }
 
-        function handleClickRight(_event: MouseEvent): void {
+
+    function handleClick(_event: MouseEvent): void {
+
+        score--;
+
+        console.log(_event);
+        let snowballVector: Vector = new Vector(_event.offsetX, _event.offsetY);
+        //offset gibt die Werte relativ zum Dokument zurück (beim Scrollen)
+        snowball = new Snowball(6, snowballVector);
+
+        window.setTimeout(getbirdHit, 400, snowballVector); // Parameter übergeben
+
+        //getbirdHit(snowballVector);
 
 
-            console.log(_event);
-            let birdfoodVector: Vector = new Vector(_event.offsetX, _event.offsetY);
-            birdfood = new Birdfood(2, birdfoodVector);
-            
-            
+    }
+
+    function handleClickRight(_event: MouseEvent): void {
+
+
+        console.log(_event);
+        let birdfoodVector: Vector = new Vector(_event.offsetX, _event.offsetY);
+        birdfood = new Birdfood(2, birdfoodVector);
+
+
         for (let bird of birdArray) {
             if (birdIsNear(bird.position)) {
                 bird.job = TASK.FLYTOFOOD; //vllt this.job
@@ -144,7 +150,7 @@ namespace L_10 {
 
     function birdIsNear(_hotspot: Vector): boolean {
 
-        let nearsize: number = 300;
+        let nearsize: number = 100;
         let getDifference: Vector = Vector.getDifference(_hotspot, new Vector(birdfood.position.x, birdfood.foodPosition));
         return (nearsize > getDifference.length); //vllt >= 
 
@@ -158,14 +164,14 @@ namespace L_10 {
                 deleteBird(bird);
                 return;
             }
-        } 
+        }
 
     }
 
     function deleteBird(_bird: Bird): void {
         console.log("Vogel löschen")
 
-        let index: number = birdArray.indexOf(_bird); 
+        let index: number = birdArray.indexOf(_bird);
         // sucht bird im Array und schaut an welcher Stelle im Array der ist und gibt Stelle zurück
         birdArray.splice(index, 1); // an der Stelle index wird ein Element gelöscht 
         if (birdArray.length == 0) {
@@ -174,56 +180,6 @@ namespace L_10 {
         }
     }
 
-    
+
 }
-
-
-
-
-
-
-    /*    document.getElementById("score").innerText = "Time:" + timer.toString() + "s" + " | Snowballs:" + (20 - snowball.length).toString() + " | Snowball Ready: " + snowballReadyCheck.toString() + " | Score:" + score.toString();
-        if (snowballs.length > 19) {
-            console.log(timer);
-            if (snowballs[19].timer == 0) {
-                endscreen();
-            }
-        }
- 
-    }
- 
-      let address: string = "https://....herokuapp.com/";
-     
-      function sendRequestWithCustomData(): void {
-          console.log("requestcustom");
-          let xhr: XMLHttpRequest = new XMLHttpRequest();
-          let sendString: string = "";
-          let textInput = "your name...";
-          sendString += "name:" + document.getElementById("textInput").getAttribute("value") + "&" + "score:" + score;
-     
-          xhr.open("GET", address + "?" + sendString, true);
-          xhr.addEventListener("readystatechange", handleStateChange);
-          xhr.send();
-          highscores();
-      }
-     
-      function handleStateChange(_event: ProgressEvent): void {
-          var xhr: XMLHttpRequest = <XMLHttpRequest>_event.target;
-          if (xhr.readyState == XMLHttpRequest.DONE) {
-              console.log("ready: " + xhr.readyState, " | type: " + xhr.responseType, " | status:" + xhr.status, " | text:" + xhr.statusText);
-              console.log("response: " + xhr.response);
-          } 
-     
-      }
-     
-    
- 
-   async function sendScore(_event: Event): Promise<void> {
-       console.log("send score")
-       let query: URLSearchParams = new URLSearchParams;//(<any>formData);
-       fetch("Endscreen.html=?" + query.toString());
-       alert ("Score sent!");
- 
-    } 
-*/
 
