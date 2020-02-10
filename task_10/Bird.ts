@@ -177,7 +177,7 @@ namespace L_10 {
 
         }
 
-        public isHit(_hotspot: Vector): boolean {
+        public birdIsHit(_hotspot: Vector): boolean {
             this.hitsize = 40; // radius, indem sie getroffen werden
             let difference: Vector = new Vector(_hotspot.x - this.position.x, _hotspot.y - this.position.y);
             return (Math.abs(difference.x) < this.hitsize && Math.abs(difference.y) < this.hitsize);

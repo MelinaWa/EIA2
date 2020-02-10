@@ -129,7 +129,7 @@ var L_10;
             }
             L_10.crc2.restore();
         }
-        isHit(_hotspot) {
+        birdIsHit(_hotspot) {
             this.hitsize = 40; // radius, indem sie getroffen werden
             let difference = new L_10.Vector(_hotspot.x - this.position.x, _hotspot.y - this.position.y);
             return (Math.abs(difference.x) < this.hitsize && Math.abs(difference.y) < this.hitsize);

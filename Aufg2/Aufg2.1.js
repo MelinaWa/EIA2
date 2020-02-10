@@ -1,3 +1,4 @@
+"use strict";
 /* Aufgabe: Aufgabe 2
 Name: Melina Wald
 Matrikel: 259225
@@ -34,13 +35,13 @@ var UNO;
     function unokarten() {
         let kartenanzahl = prompt("Wie viele Karten?");
         let x = parseInt(kartenanzahl);
-        for (let anz = x; anz > 0; anz--) {
+        for (let anz = x; anz > 0; anz--) { // Anzahl die wir bei prompt eingegeben haben wird 
             // bei jedem Durchlauf um 1 abgezogen 
             let r = Math.floor(Math.random() * (cards.length - 1)); // Karte wird aus cards gel�scht
             handcards.push(cards[r]); // wird in handcards Array gepusht 
             cards.splice(r, 1); // An der Position r wird die n�chste Karte abgezogen
         }
-        for (let h = 0; h < handcards.length; h++) {
+        for (let h = 0; h < handcards.length; h++) { // h = rechne solange bis die Anzahl der L�nge des Arrays erreicht ist 
             let div = document.createElement("div"); // erstelle mir im html ein div
             document.getElementById("Cards").appendChild(div); // Kind erstellen f�r id Cards 
             div.innerHTML = handcards[h].value; // schreibe mir die Werte der Handkarten in meine divs rein

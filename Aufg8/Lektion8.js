@@ -323,7 +323,7 @@ var L08_Canvas;
         crc2.moveTo(-36, 10);
         crc2.lineTo(-50, 1);
         crc2.lineTo(-40, 17);
-        crc2.fillStyle = "orange";
+        crc2.fillStyle = getRandomColor();
         crc2.fill();
         crc2.restore();
         crc2.closePath();

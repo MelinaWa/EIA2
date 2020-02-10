@@ -1,3 +1,4 @@
+"use strict";
 var Aufg0;
 (function (Aufg0) {
     function hallo() {

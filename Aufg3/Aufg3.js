@@ -1,3 +1,4 @@
+"use strict";
 /* Aufgabe: Aufgabe 3
 Name: Melina Wald
 Matrikel: 259225
@@ -47,7 +48,7 @@ var UNO3;
     }
     //random
     function random(x) {
-        for (let anz = x; anz > 0; anz--) {
+        for (let anz = x; anz > 0; anz--) { // Anzahl die wir bei prompt eingegeben haben wird 
             // bei jedem Durchlauf um 1 abgezogen 
             let r = Math.floor(Math.random() * (cards.length - 1)); // Karte wird aus cards gel�scht
             handcards.push(cards[r]);
@@ -95,13 +96,14 @@ var UNO3;
         displayCards();
     }
     function pressKeyboard(event) {
-        if (event.keyCode == 32) {
+        if (event.keyCode == 32) // 32 = Leertaste 
+         {
             takecard();
         }
     }
     function displayCards() {
         document.getElementById("Cards").innerHTML = "";
-        for (let h = 0; h < handcards.length; h++) {
+        for (let h = 0; h < handcards.length; h++) { // h = rechne solange bis die Anzahl der L�nge des Arrays erreicht ist 
             let div = document.createElement("div"); // erstelle mir im html ein div
             document.getElementById("Cards").appendChild(div); // Kind erstellen f�r id Cards 
             div.innerHTML = handcards[h].value; // schreibe mir die Werte der Handkarten in meine divs rein
