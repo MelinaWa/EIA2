@@ -1,4 +1,14 @@
+span {
+  
+	font-size: 1em;
+	color: #ffffff;
+	text-align: left;
+	font-family: 'Bebas Neue', cursive;
+	letter-spacing: 0.02em;
+	border-style: solid;
+	margin: 1em 5em 1em 5em;
 
+}
 
 #Startscreen {
 
