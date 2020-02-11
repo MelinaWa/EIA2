@@ -146,10 +146,10 @@ var L_Endabgabe;
         let query = "command=retrieve";
         let response = await fetch(serveradress + "?" + query);
         let responseText = await response.text();
-        // let finalresponse: any[] = JSON.parse(responseText);
+        let finalresponse = JSON.parse(responseText);
         alert(responseText);
-        let orders = document.querySelector("span#highscorelist");
-        orders.innerText = responseText;
+        let result = document.querySelector("span#highscorelist");
+        result.innerText = responseText;
     }
 })(L_Endabgabe || (L_Endabgabe = {}));
 //# sourceMappingURL=Main.js.map

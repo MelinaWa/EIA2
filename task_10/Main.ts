@@ -229,11 +229,11 @@ namespace L_Endabgabe {
         let query: string = "command=retrieve";
         let response: Response = await fetch(serveradress + "?" + query);
         let responseText: string = await response.text();
-       // let finalresponse: any[] = JSON.parse(responseText);
+        let finalresponse: any[] = JSON.parse(responseText);
 
         alert(responseText);
-        let orders: HTMLDivElement = <HTMLDivElement>document.querySelector("span#highscorelist");
-        orders.innerText = responseText;
+        let result: HTMLDivElement = <HTMLDivElement>document.querySelector("span#highscorelist");
+        result.innerText = responseText;
 
 
     }
