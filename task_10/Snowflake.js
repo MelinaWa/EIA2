@@ -4,8 +4,6 @@ var L_Endabgabe;
     class Snowflake extends L_Endabgabe.Moveable {
         constructor(_size, _position) {
             super(_position);
-            //if (_position)
-            //    this.position = _position;
             this.position = new L_Endabgabe.Vector(Math.random() * L_Endabgabe.crc2.canvas.width, Math.random() * L_Endabgabe.crc2.canvas.height);
             this.velocity = new L_Endabgabe.Vector(1, Math.random() + 1 * 1);
             this.size = _size;

@@ -49,9 +49,9 @@ namespace L_Endabgabe {
         canvas.addEventListener("contextmenu", handleClickRight);
 
         let highscorebutton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("highscorelistbutton");
-        highscorebutton.addEventListener("click", gethighscorelist);
+        highscorebutton.addEventListener("click", getFromDataBase);
 
-        document.getElementById("highscorelist").addEventListener("click", gethighscorelist);
+        document.getElementById("highscorelist").addEventListener("click", getFromDataBase);
 
 
 
@@ -184,31 +184,38 @@ namespace L_Endabgabe {
         let index: number = birdArray.indexOf(_bird);
         birdArray.splice(index, 1); 
         if (birdArray.length == 0) {
-            end();
+            invokeend();
 
             clearInterval(interval);
 
+            
+
         }
+
+        function invokeend (): void {
+
+            document.getElementById("Game").style.display = "none";
+            document.getElementById("Endscreen").style.display = "inherit";
+
+            let submit: HTMLButtonElement = <HTMLButtonElement>document.querySelector("button[type=submit]");
+            submit.addEventListener("click", end);
+
+
+        }
+       
     }
 
-    export function end(): void {
-
-        let submit: HTMLButtonElement = <HTMLButtonElement>document.querySelector("button[type=submit]");
-        submit.addEventListener("click", nameScore);
-
-        document.getElementById("Game").style.display = "none";
-        document.getElementById("Endscreen").style.display = "inherit";
-
-    }
-
-    function nameScore(): void {
+    function end(): void {
         console.log("end");
+
+    
+
         let insertedname: any = prompt("Your Score: " + score + "\n Enter your name.");
         if (insertedname != null) {
-            sendtohighscorelist(insertedname, score);
+            sendToDataBase(insertedname, score);
         }
     }
-    async function sendtohighscorelist(_insertedName: string, _score: number): Promise<void> {
+    async function sendToDataBase(_insertedName: string, _score: number): Promise<void> {
 
         let query: string = "name=" + _insertedName + "&highScore=" + _score;
         let response: Response = await fetch(serveradress + "?" + query);
@@ -216,22 +223,17 @@ namespace L_Endabgabe {
 
     }
 
-    async function gethighscorelist(): Promise<void> {
+    async function getFromDataBase(): Promise<void> {
 
+        console.log("Highscores ausgeben");
         let query: string = "command=retrieve";
         let response: Response = await fetch(serveradress + "?" + query);
-        let responseJson: string[] = await response.json();
-        for (let index = 0; index < responseJson.length; index++) {
-            delete responseJson[index]["_id"];
-        }
-        let sortedJson = responseJson.sort(({ score: score_1 }: string, { score: score_2 }: string) => score_1 - score_2);
-        let responseText = "";
-        for (let index = 0; index < sortedJson.length; index++) {
-            responseText += sortedJson[index].name + " – " + sortedJson[index].score + "\n";
-        }
+        let responseText: string = await response.text();
+       // let finalresponse: any[] = JSON.parse(responseText);
 
-        let highscores: HTMLDivElement = <HTMLDivElement>document.querySelector("span#highscorelist");
-        highscores.innerText = responseText;
+        alert(responseText);
+        let orders: HTMLDivElement = <HTMLDivElement>document.querySelector("span#highscorelist");
+        orders.innerText = responseText;
 
 
     }

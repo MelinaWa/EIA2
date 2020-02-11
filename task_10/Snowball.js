@@ -1,16 +1,14 @@
 "use strict";
 var L_Endabgabe;
 (function (L_Endabgabe) {
-    class Snowball /*extends Moveable*/ {
+    class Snowball {
         constructor(_size, _position) {
-            // super(new Vector());
             (_position);
             this.position = _position;
             this.size = _size;
             console.log("Snowball constructor");
         }
         draw() {
-            //console.log("Snowflake draw"); 
             L_Endabgabe.crc2.beginPath();
             L_Endabgabe.crc2.save();
             L_Endabgabe.crc2.translate(this.position.x, this.position.y);
@@ -20,7 +18,6 @@ var L_Endabgabe;
             L_Endabgabe.crc2.fill();
             L_Endabgabe.crc2.restore();
             L_Endabgabe.crc2.closePath();
-            // console.log(this.size);
         }
     }
     L_Endabgabe.Snowball = Snowball;

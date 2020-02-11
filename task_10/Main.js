@@ -33,8 +33,8 @@ var L_Endabgabe;
         canvas.addEventListener("click", handleClick);
         canvas.addEventListener("contextmenu", handleClickRight);
         let highscorebutton = document.getElementById("highscorelistbutton");
-        highscorebutton.addEventListener("click", gethighscorelist);
-        document.getElementById("highscorelist").addEventListener("click", gethighscorelist);
+        highscorebutton.addEventListener("click", getFromDataBase);
+        document.getElementById("highscorelist").addEventListener("click", getFromDataBase);
         for (let i = 0; i < 1; i++) {
             let bird = new L_Endabgabe.Bird(2);
             birdArray.push(bird);
@@ -120,42 +120,36 @@ var L_Endabgabe;
         let index = birdArray.indexOf(_bird);
         birdArray.splice(index, 1);
         if (birdArray.length == 0) {
-            end();
+            invokeend();
             clearInterval(interval);
+        }
+        function invokeend() {
+            document.getElementById("Game").style.display = "none";
+            document.getElementById("Endscreen").style.display = "inherit";
+            let submit = document.querySelector("button[type=submit]");
+            submit.addEventListener("click", end);
         }
     }
     function end() {
-        let submit = document.querySelector("button[type=submit]");
-        submit.addEventListener("click", nameScore);
-        document.getElementById("Game").style.display = "none";
-        document.getElementById("Endscreen").style.display = "inherit";
-    }
-    L_Endabgabe.end = end;
-    function nameScore() {
         console.log("end");
         let insertedname = prompt("Your Score: " + score + "\n Enter your name.");
         if (insertedname != null) {
-            sendtohighscorelist(insertedname, score);
+            sendToDataBase(insertedname, score);
         }
     }
-    async function sendtohighscorelist(_insertedName, _score) {
+    async function sendToDataBase(_insertedName, _score) {
         let query = "name=" + _insertedName + "&highScore=" + _score;
         let response = await fetch(serveradress + "?" + query);
     }
-    async function gethighscorelist() {
+    async function getFromDataBase() {
+        console.log("Highscores ausgeben");
         let query = "command=retrieve";
         let response = await fetch(serveradress + "?" + query);
-        let responseJson = await response.json();
-        for (let index = 0; index < responseJson.length; index++) {
-            delete responseJson[index]["_id"];
-        }
-        let sortedJson = responseJson.sort(({ score: score_1 }, { score: score_2 }) => score_1 - score_2);
-        let responseText = "";
-        for (let index = 0; index < sortedJson.length; index++) {
-            responseText += sortedJson[index].name + " – " + sortedJson[index].score + "\n";
-        }
-        let highscores = document.querySelector("span#highscorelist");
-        highscores.innerText = responseText;
+        let responseText = await response.text();
+        // let finalresponse: any[] = JSON.parse(responseText);
+        alert(responseText);
+        let orders = document.querySelector("span#highscorelist");
+        orders.innerText = responseText;
     }
 })(L_Endabgabe || (L_Endabgabe = {}));
 //# sourceMappingURL=Main.js.map

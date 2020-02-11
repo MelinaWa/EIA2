@@ -24,7 +24,6 @@ var L_Endabgabe;
             this.scale(length);
         }
         copy() {
-            // neue Positionsobjekte bewegen sich unabh. voneinander
             let vector = new Vector(this.x, this.y);
             return vector;
         }

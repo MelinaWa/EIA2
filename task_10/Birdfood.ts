@@ -1,6 +1,6 @@
 namespace L_Endabgabe {
 
-    export class Birdfood extends Moveable { //weil die move hier drin ist 
+    export class Birdfood extends Moveable {
         public position: Vector;
         public velocity: Vector;
         public size: number;
@@ -9,7 +9,7 @@ namespace L_Endabgabe {
 
         public constructor(_size: number, _position: Vector) {
 
-            super(_position) 
+            super(_position)
 
             console.log("Birdfood constructor");
 
@@ -20,7 +20,7 @@ namespace L_Endabgabe {
         }
 
 
-        public draw(): void { //public, wird im Main aufgerufen
+        public draw(): void {
 
 
             crc2.beginPath();
@@ -36,7 +36,7 @@ namespace L_Endabgabe {
 
 
 
-    }
+        }
 
 
 

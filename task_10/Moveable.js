@@ -11,7 +11,6 @@ var L_Endabgabe;
         }
         move(_timeslice) {
             let offset = this.velocity.copy();
-            //offset.scale(_timeslice);
             this.position.add(offset);
             if (this.position.x < -50)
                 this.position.x += L_Endabgabe.crc2.canvas.width + 50;

@@ -14,14 +14,14 @@ var L_Endabgabe;
     if (port == undefined)
         port = 5001;
     startServer(port);
-    connectToDatabase(databaseURL);
+    connectToDataBase(databaseURL);
     function startServer(_port) {
         let server = Http.createServer();
         console.log("Server starting on port:" + _port);
         server.listen(_port);
         server.addListener("request", handleRequest);
     }
-    async function connectToDatabase(_url) {
+    async function connectToDataBase(_url) {
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
@@ -36,11 +36,11 @@ var L_Endabgabe;
         if (_request.url) {
             let url = Url.parse(_request.url, true);
             if (url.query["command"] == "retrieve") {
-                let report = await retrieveOrders(); // Antworten im report gespeichert
-                if (report == "We encountered technical problems. Please try again later")
+                let report = await retrieveOrders();
+                if (report == "null")
                     _response.write(report);
                 else
-                    _response.write(JSON.stringify(report)); // report wird zu json gewandelt
+                    _response.write(JSON.stringify(report));
             }
             else {
                 console.log("urlQuery: ", url.query);
@@ -53,15 +53,14 @@ var L_Endabgabe;
         _response.end();
     }
     async function retrieveOrders() {
-        // console.log("Asking DB about Orders ", orders.find());
-        let cursor = await highscores.find().sort({ score: -1 }); //cursor festlegen, mit dem auf ELemente gezeigt werden
-        let answer = await cursor.toArray(); // Jeder Eintrag soll in einem Array gespeichert werden
+        let cursor = await highscores.find().sort({ score: -1 });
+        let answer = await cursor.toArray();
         console.log("DB CursorToArray", answer);
         if (answer != null) {
             return answer;
         }
         else
-            return "We encountered technical problems. Please try again later";
+            return "null";
     }
 })(L_Endabgabe = exports.L_Endabgabe || (exports.L_Endabgabe = {}));
 //# sourceMappingURL=Database2.js.map

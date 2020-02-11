@@ -1,5 +1,5 @@
 namespace L_Endabgabe {
-    
+
     interface Vector {
         x: number;
         y: number;
@@ -35,10 +35,10 @@ namespace L_Endabgabe {
         drawTree4({ x: 430, y: 170 });
         drawTree5({ x: 0, y: 300 });
         drawTree6({ x: 15, y: 350 });
-        drawTree7({ x: 1000, y: 200 },{ x: 2, y: 2 });
+        drawTree7({ x: 1000, y: 200 }, { x: 2, y: 2 });
         drawBirdhouse({ x: 200, y: 400 });
-      //  drawstandingBird({ x: 340, y: 230 });
-      //  drawstandingBird1({ x: 240, y: 230 });
+        //  drawstandingBird({ x: 340, y: 230 });
+        //  drawstandingBird1({ x: 240, y: 230 });
         crc2.save();
 
         image = crc2.getImageData(0, 0, canvas.width, canvas.height);
@@ -330,7 +330,7 @@ namespace L_Endabgabe {
         crc2.save();
         crc2.translate(_position.x, _position.y);
         crc2.beginPath();
-        crc2.scale (_scale.x, _scale.y);
+        crc2.scale(_scale.x, _scale.y);
         crc2.stroke();
         crc2.fillStyle = "brown";
         crc2.fillRect(45, 75, 10, 30);
@@ -340,7 +340,7 @@ namespace L_Endabgabe {
         crc2.save();
         crc2.translate(_position.x, _position.y);
         crc2.beginPath();
-        crc2.scale (_scale.x, _scale.y);
+        crc2.scale(_scale.x, _scale.y);
         crc2.moveTo(50, 25);
         crc2.lineTo(25, 75);
         crc2.lineTo(75, 75);
@@ -349,7 +349,7 @@ namespace L_Endabgabe {
         crc2.restore();
         crc2.closePath();
 
-    
+
 
     }
 
@@ -395,389 +395,8 @@ namespace L_Endabgabe {
         crc2.closePath();
 
     }
-    
 
-   /* function drawstandingBird(_position: Vector): void {
-        //head
-        crc2.save();
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.arc(0, 80, 15, 0, 2 * Math.PI);
-        crc2.fillStyle = "#af8a54";
-        crc2.fill();
-        crc2.restore();
-        crc2.closePath();
-        //body
-        crc2.save();
-        crc2.scale(1, 1.5);
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.arc(0, 0, 20, 0, 2 * Math.PI);
-        crc2.fillStyle = "#af8a54";
-        crc2.fill();
-        crc2.restore();
-        crc2.closePath();
-        //whiteeye
-        crc2.save();
-        crc2.scale(1, 1.5);
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.arc(-5, -24, 3, 0, 2 * Math.PI);
-        crc2.fillStyle = "white";
-        crc2.fill();
-        crc2.restore();
-        crc2.closePath();
-        //whiteeye       
-        crc2.save();
-        crc2.scale(1, 1.5);
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.arc(5, -24, 3, 0, 2 * Math.PI);
-        crc2.fillStyle = "white";
-        crc2.fill();
-        crc2.restore();
-        crc2.closePath();
-        //blackeye
-        crc2.save();
-        crc2.scale(1, 1.5);
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.arc(5, -23, 1.5, 0, 2 * Math.PI);
-        crc2.fillStyle = "black";
-        crc2.fill();
-        crc2.restore();
-        crc2.closePath();
-        //blackeye
-        crc2.save();
-        crc2.scale(1, 1.5);
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.arc(-5, -23, 1.5, 0, 2 * Math.PI);
-        crc2.fillStyle = "black";
-        crc2.fill();
-        crc2.restore();
-        crc2.closePath();
 
-        //wings
-
-        crc2.save();
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.moveTo(-17, 100);
-        crc2.lineTo(-40, 100);
-        crc2.lineTo(-17, 110);
-        crc2.fillStyle = "#af8a54";
-        crc2.fill();
-        crc2.restore();
-        crc2.closePath();
-
-        crc2.save();
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.moveTo(17, 100);
-        crc2.lineTo(40, 100);
-        crc2.lineTo(17, 110);
-        crc2.fillStyle = "#af8a54";
-        crc2.fill();
-        crc2.restore();
-        crc2.closePath();
-
-        crc2.save();
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.moveTo(-5, 85);
-        crc2.lineTo(0, 95);
-        crc2.lineTo(5, 85);
-        crc2.fillStyle = "#ffbc40";
-        crc2.fill();
-        crc2.restore();
-        crc2.closePath();
-
-        //head
-        crc2.save();
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.arc(0, 80, 15, 0, 2 * Math.PI);
-        crc2.fillStyle = "#af8a54";
-        crc2.fill();
-        crc2.restore();
-        crc2.closePath();
-        //body
-        crc2.save();
-        crc2.scale(1, 1.5);
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.arc(0, 0, 20, 0, 2 * Math.PI);
-        crc2.fillStyle = "#af8a54";
-        crc2.fill();
-        crc2.restore();
-        crc2.closePath();
-        //whiteeye
-        crc2.save();
-        crc2.scale(1, 1.5);
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.arc(-5, -24, 3, 0, 2 * Math.PI);
-        crc2.fillStyle = "white";
-        crc2.fill();
-        crc2.restore();
-        crc2.closePath();
-        //whiteeye       
-        crc2.save();
-        crc2.scale(1, 1.5);
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.arc(5, -24, 3, 0, 2 * Math.PI);
-        crc2.fillStyle = "white";
-        crc2.fill();
-        crc2.restore();
-        crc2.closePath();
-        //blackeye
-        crc2.save();
-        crc2.scale(1, 1.5);
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.arc(5, -23, 1.5, 0, 2 * Math.PI);
-        crc2.fillStyle = "black";
-        crc2.fill();
-        crc2.restore();
-        crc2.closePath();
-        //blackeye
-        crc2.save();
-        crc2.scale(1, 1.5);
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.arc(-5, -23, 1.5, 0, 2 * Math.PI);
-        crc2.fillStyle = "black";
-        crc2.fill();
-        crc2.restore();
-        crc2.closePath();
-
-        //wings
-
-        crc2.save();
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.moveTo(-17, 100);
-        crc2.lineTo(-40, 100);
-        crc2.lineTo(-17, 110);
-        crc2.fillStyle = "#af8a54";
-        crc2.fill();
-        crc2.restore();
-        crc2.closePath();
-
-        crc2.save();
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.moveTo(17, 100);
-        crc2.lineTo(40, 100);
-        crc2.lineTo(17, 110);
-        crc2.fillStyle = "#af8a54";
-        crc2.fill();
-        crc2.restore();
-        crc2.closePath();
-
-        crc2.save();
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.moveTo(-5, 85);
-        crc2.lineTo(0, 95);
-        crc2.lineTo(5, 85);
-        crc2.fillStyle = "#ffbc40";
-        crc2.fill();
-        crc2.restore();
-        crc2.closePath();
-    }
-    function drawstandingBird1(_position: Vector): void {
-        //head
-        crc2.save();
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.arc(0, 80, 15, 0, 2 * Math.PI);
-        crc2.fillStyle = "#af8a54";
-        crc2.fill();
-        crc2.restore();
-        crc2.closePath();
-        //body
-        crc2.save();
-        crc2.scale(1, 1.5);
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.arc(0, 0, 20, 0, 2 * Math.PI);
-        crc2.fillStyle = "#af8a54";
-        crc2.fill();
-        crc2.restore();
-        crc2.closePath();
-        //whiteeye
-        crc2.save();
-        crc2.scale(1, 1.5);
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.arc(-5, -24, 3, 0, 2 * Math.PI);
-        crc2.fillStyle = "white";
-        crc2.fill();
-        crc2.restore();
-        crc2.closePath();
-        //whiteeye       
-        crc2.save();
-        crc2.scale(1, 1.5);
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.arc(5, -24, 3, 0, 2 * Math.PI);
-        crc2.fillStyle = "white";
-        crc2.fill();
-        crc2.restore();
-        crc2.closePath();
-        //blackeye
-        crc2.save();
-        crc2.scale(1, 1.5);
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.arc(5, -23, 1.5, 0, 2 * Math.PI);
-        crc2.fillStyle = "black";
-        crc2.fill();
-        crc2.restore();
-        crc2.closePath();
-        //blackeye
-        crc2.save();
-        crc2.scale(1, 1.5);
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.arc(-5, -23, 1.5, 0, 2 * Math.PI);
-        crc2.fillStyle = "black";
-        crc2.fill();
-        crc2.restore();
-        crc2.closePath();
-
-        //wings
-
-        crc2.save();
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.moveTo(-17, 100);
-        crc2.lineTo(-40, 100);
-        crc2.lineTo(-17, 110);
-        crc2.fillStyle = "#af8a54";
-        crc2.fill();
-        crc2.restore();
-        crc2.closePath();
-
-        crc2.save();
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.moveTo(17, 100);
-        crc2.lineTo(40, 100);
-        crc2.lineTo(17, 110);
-        crc2.fillStyle = "#af8a54";
-        crc2.fill();
-        crc2.restore();
-        crc2.closePath();
-
-        crc2.save();
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.moveTo(-5, 85);
-        crc2.lineTo(0, 95);
-        crc2.lineTo(5, 85);
-        crc2.fillStyle = "#ffbc40";
-        crc2.fill();
-        crc2.restore();
-        crc2.closePath();
-
-        //head
-        crc2.save();
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.arc(0, 80, 15, 0, 2 * Math.PI);
-        crc2.fillStyle = "#af8a54";
-        crc2.fill();
-        crc2.restore();
-        crc2.closePath();
-        //body
-        crc2.save();
-        crc2.scale(1, 1.5);
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.arc(0, 0, 20, 0, 2 * Math.PI);
-        crc2.fillStyle = "#af8a54";
-        crc2.fill();
-        crc2.restore();
-        crc2.closePath();
-        //whiteeye
-        crc2.save();
-        crc2.scale(1, 1.5);
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.arc(-5, -24, 3, 0, 2 * Math.PI);
-        crc2.fillStyle = "white";
-        crc2.fill();
-        crc2.restore();
-        crc2.closePath();
-        //whiteeye       
-        crc2.save();
-        crc2.scale(1, 1.5);
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.arc(5, -24, 3, 0, 2 * Math.PI);
-        crc2.fillStyle = "white";
-        crc2.fill();
-        crc2.restore();
-        crc2.closePath();
-        //blackeye
-        crc2.save();
-        crc2.scale(1, 1.5);
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.arc(5, -23, 1.5, 0, 2 * Math.PI);
-        crc2.fillStyle = "black";
-        crc2.fill();
-        crc2.restore();
-        crc2.closePath();
-        //blackeye
-        crc2.save();
-        crc2.scale(1, 1.5);
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.arc(-5, -23, 1.5, 0, 2 * Math.PI);
-        crc2.fillStyle = "black";
-        crc2.fill();
-        crc2.restore();
-        crc2.closePath();
-        //wings
-        crc2.save();
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.moveTo(-17, 100);
-        crc2.lineTo(-40, 100);
-        crc2.lineTo(-17, 110);
-        crc2.fillStyle = "#af8a54";
-        crc2.fill();
-        crc2.restore();
-        crc2.closePath();
-
-        crc2.save();
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.moveTo(17, 100);
-        crc2.lineTo(40, 100);
-        crc2.lineTo(17, 110);
-        crc2.fillStyle = "#af8a54";
-        crc2.fill();
-        crc2.restore();
-        crc2.closePath();
-
-        crc2.save();
-        crc2.translate(_position.x, _position.y);
-        crc2.beginPath();
-        crc2.moveTo(-5, 85);
-        crc2.lineTo(0, 95);
-        crc2.lineTo(5, 85);
-        crc2.fillStyle = "#ffbc40";
-        crc2.fill();
-        crc2.restore();
-        crc2.closePath();
-
-    } */
 
 
 }
