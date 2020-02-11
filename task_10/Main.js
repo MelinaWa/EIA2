@@ -77,6 +77,7 @@ var L_Endabgabe;
         score--;
         console.log(score);
     }
+    /// Throw Food ///
     function handleClickRight(_event) {
         console.log(_event);
         let birdfoodVector = new L_Endabgabe.Vector(_event.offsetX, _event.offsetY);
@@ -98,13 +99,13 @@ var L_Endabgabe;
         let getDifference = L_Endabgabe.Vector.getDifference(_hotspot, new L_Endabgabe.Vector(birdfood.position.x, birdfood.foodPosition));
         return (nearsize > getDifference.length); //vllt >= 
     }
+    /// Throw Snowball ///
     function handleClick(_event) {
         score--;
         console.log(_event);
         let snowballVector = new L_Endabgabe.Vector(_event.offsetX, _event.offsetY);
-        //offset gibt die Werte relativ zum Dokument zurück (beim Scrollen)
         snowball = new L_Endabgabe.Snowball(6, snowballVector);
-        window.setTimeout(getbirdHit, 400, snowballVector); // Parameter übergeben
+        window.setTimeout(getbirdHit, 400, snowballVector);
     }
     function getbirdHit(_hotspot) {
         for (let bird of birdArray) {
@@ -117,8 +118,7 @@ var L_Endabgabe;
     function deleteBird(_bird) {
         console.log("Vogel löschen");
         let index = birdArray.indexOf(_bird);
-        // sucht bird im Array und schaut an welcher Stelle im Array der ist und gibt Stelle zurück
-        birdArray.splice(index, 1); // an der Stelle index wird ein Element gelöscht 
+        birdArray.splice(index, 1);
         if (birdArray.length == 0) {
             end();
             clearInterval(interval);
@@ -151,9 +151,9 @@ var L_Endabgabe;
             delete responseJson[index]["_id"];
         }
         let sortedJson = responseJson.sort(({ score: aScore }, { score: bScore }) => bScore - aScore);
-        let output = "";
+        let responseText = "";
         for (let index = 0; index < sortedJson.length; index++) {
-            output += sortedJson[index].name + " - " + sortedJson[index].score + "\n";
+            responseText += sortedJson[index].name + " - " + sortedJson[index].score + "\n";
         }
         alert(responseText);
         let highscores = document.querySelector("span#highscorelist");
