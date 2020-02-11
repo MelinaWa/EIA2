@@ -1,15 +1,13 @@
 namespace L_Endabgabe {
     export class Snowflake extends Moveable {
-        public position: Vector; // weil Moveable auch public ist
+        public position: Vector; 
         public velocity: Vector;
         private size: number;
 
-        public constructor(_size: number, _position?: Vector) { // Schneeflocken werden im handleLoad vervielfacht 
+        public constructor(_size: number, _position?: Vector) {  
           
             super(_position);
             
-            //if (_position)
-            //    this.position = _position;
             
                 this.position = new Vector(Math.random()*crc2.canvas.width, Math.random()*crc2.canvas.height);
                 

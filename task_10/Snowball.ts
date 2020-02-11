@@ -1,14 +1,11 @@
 namespace L_Endabgabe {
 
-    export class Snowball /*extends Moveable*/ {
+    export class Snowball{
 
         public position: Vector;
-       // protected velocity: Vector; 
         public size: number;
 
         public constructor(_size: number, _position: Vector) {
-
-           // super(new Vector());
 
             (_position)
             this.position = _position;
@@ -19,8 +16,6 @@ namespace L_Endabgabe {
         }
         
         public draw(): void {
-            //console.log("Snowflake draw"); 
-            
             crc2.beginPath();
             crc2.save();
             crc2.translate(this.position.x, this.position.y);
@@ -30,7 +25,6 @@ namespace L_Endabgabe {
             crc2.fill();
             crc2.restore();
             crc2.closePath();
-            // console.log(this.size);
             
 
         }

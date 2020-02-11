@@ -31,8 +31,7 @@ namespace L_Endabgabe {
             this.scale(length);
         }
 
-        public copy(): Vector { // vector repliziert sich selbst, Kopie -> neuer Vektor gleiche Werte 
-            // neue Positionsobjekte bewegen sich unabh. voneinander
+        public copy(): Vector {
             let vector: Vector = new Vector(this.x, this.y);
             return vector;
         }
