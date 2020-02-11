@@ -70,7 +70,7 @@ var L_10;
             }
         }
     }
-    window.setInterval(createScore, 1000);
+    let interval = window.setInterval(createScore, 1000);
     function createScore() {
         score--;
         console.log(score);
@@ -120,6 +120,7 @@ var L_10;
         birdArray.splice(index, 1); // an der Stelle index wird ein Element gelöscht 
         if (birdArray.length == 0) {
             end();
+            clearInterval(interval);
         }
     }
     function end() {
@@ -133,13 +134,22 @@ var L_10;
         console.log("end");
         let insertedname = prompt("Your Score: " + score + "\n Enter your name.");
         if (insertedname != null) {
-            sendtolist(insertedname, score);
+            sendtohighscorelist(insertedname, score);
         }
-        async function sendtolist(_insertedName, _score) {
-            let query = "name=" + _insertedName + "&highScore=" + _score;
-            let response = await fetch(serveradress + "?" + query);
-            alert(response);
-        }
+    }
+    async function sendtohighscorelist(_insertedName, _score) {
+        let query = "name=" + _insertedName + "&highScore=" + _score;
+        let response = await fetch(serveradress + "?" + query);
+        alert(response);
+    }
+    async function gethighscorelist() {
+        console.log("Highscores ausgeben");
+        let query = "command=retrieve";
+        let response = await fetch(serveradress + "?" + query);
+        let responseText = await response.text();
+        alert(responseText);
+        let orders = document.querySelector("div#highscorelist");
+        orders.innerText = responseText;
     }
 })(L_10 || (L_10 = {}));
 //# sourceMappingURL=Main.js.map

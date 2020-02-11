@@ -111,7 +111,7 @@ namespace L_10 {
         }
     }
 
-    window.setInterval(createScore, 1000);
+    let interval: number = window.setInterval(createScore, 1000);
 
     function createScore(): void {
         score--;
@@ -188,6 +188,10 @@ namespace L_10 {
         if (birdArray.length == 0) {
             end();
 
+            clearInterval(interval);
+
+
+
         }
     }
 
@@ -205,10 +209,10 @@ namespace L_10 {
         console.log("end");
         let insertedname: any = prompt("Your Score: " + score + "\n Enter your name.");
         if (insertedname != null) {
-            sendtolist(insertedname, score);
+            sendtohighscorelist(insertedname, score);
         }
-
-    async function sendtolist(_insertedName: string, _score: number): Promise<void> {
+    }
+    async function sendtohighscorelist(_insertedName: string, _score: number): Promise<void> {
 
         let query: string = "name=" + _insertedName + "&highScore=" + _score;
         let response: Response = await fetch(serveradress + "?" + query);
@@ -216,10 +220,15 @@ namespace L_10 {
 
     }
 
+    async function gethighscorelist(): Promise<void> {
 
+        console.log("Highscores ausgeben");
+        let query: string = "command=retrieve";
+        let response: Response = await fetch(serveradress + "?" + query);
+        let responseText: string = await response.text();
 
-
-
+        alert(responseText);
+        let orders: HTMLDivElement = <HTMLDivElement>document.querySelector("div#highscorelist");
+        orders.innerText = responseText;
+    }
 }
-
-

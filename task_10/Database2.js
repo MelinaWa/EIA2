@@ -28,6 +28,7 @@ var L_10;
         highscores = mongoClient.db(dbName).collection(dbCollection);
         console.log("Database connection ", highscores != undefined);
     }
+    //Anfrage
     async function handleRequest(_request, _response) {
         console.log("What's up?");
         _response.setHeader("content-type", "text/html; charset=utf-8");
@@ -35,11 +36,11 @@ var L_10;
         if (_request.url) {
             let url = Url.parse(_request.url, true);
             if (url.query["command"] == "retrieve") {
-                let report = await retrieveOrders();
+                let report = await retrieveOrders(); // Antworten im report gespeichert
                 if (report == "We encountered technical problems. Please try again later")
                     _response.write(report);
                 else
-                    _response.write(JSON.stringify(report));
+                    _response.write(JSON.stringify(report)); // report wird zu json gewandelt
             }
             else {
                 console.log("urlQuery: ", url.query);
@@ -53,8 +54,8 @@ var L_10;
     }
     async function retrieveOrders() {
         // console.log("Asking DB about Orders ", orders.find());
-        let cursor = await highscores.find();
-        let answer = await cursor.toArray();
+        let cursor = await highscores.find(); //cursor festlegen, mit dem auf ELemente gezeigt werden
+        let answer = await cursor.toArray(); // Jeder Eintrag soll in einem Array gespeichert werden
         console.log("DB CursorToArray", answer);
         if (answer != null) {
             return answer;

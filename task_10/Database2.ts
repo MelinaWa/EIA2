@@ -35,9 +35,9 @@ export namespace L_10 {
         highscores = mongoClient.db(dbName).collection(dbCollection);
         console.log("Database connection ", highscores != undefined);
     }
-
+//Anfrage
     async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise<void> {
-        console.log("What's up?");
+        console.log("What's up?"); 
 
         _response.setHeader("content-type", "text/html; charset=utf-8");
         _response.setHeader("Access-Control-Allow-Origin", "*");
@@ -47,12 +47,12 @@ export namespace L_10 {
 
 
             if (url.query["command"] == "retrieve") {
-                let report: any[] | string = await retrieveOrders();
+                let report: any[] | string = await retrieveOrders(); // Antworten im report gespeichert
                 if (report == "We encountered technical problems. Please try again later")
                     _response.write(report);
 
                 else
-                    _response.write(JSON.stringify(report));
+                    _response.write(JSON.stringify(report));// report wird zu json gewandelt
             }
             else {
                 console.log("urlQuery: ", url.query);
@@ -67,11 +67,11 @@ export namespace L_10 {
 
     async function retrieveOrders(): Promise<any[] | string> {
         // console.log("Asking DB about Orders ", orders.find());
-        let cursor: Mongo.Cursor = await highscores.find();
-        let answer: Promise<any[]> = await cursor.toArray();
+        let cursor: Mongo.Cursor = await highscores.find(); //cursor festlegen, mit dem auf ELemente gezeigt werden
+        let answer: Promise<any[]> = await cursor.toArray(); // Jeder Eintrag soll in einem Array gespeichert werden
         console.log("DB CursorToArray", answer);
         if (answer != null) {
-            return answer;
+            return answer; 
         }
         else
             return "We encountered technical problems. Please try again later";
