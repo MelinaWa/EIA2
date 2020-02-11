@@ -7,10 +7,7 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 
 namespace L_Endabgabe {
 
-    window.addEventListener("load", start);
-
-
-    // window.addEventListener("load", handleLoad);
+    window.addEventListener("load", startMainScreen);
 
     export let crc2: CanvasRenderingContext2D;
 
@@ -22,12 +19,8 @@ namespace L_Endabgabe {
     let birdfood: Birdfood;
     let fps: number = 20;
     let score: number = 100;
-    //let startbutton: HTMLButtonElement;
 
-    // function handleLoad(_event: Event): void {
-
-
-    function start(_event: Event): void {
+    function startMainScreen(_event: Event): void {
 
         document.getElementById("Endscreen").style.display = "none";
         document.getElementById("Game").style.display = "none";
@@ -40,14 +33,13 @@ namespace L_Endabgabe {
 
     async function handleLoad(_event: Event): Promise<void> {
 
-        console.log("hallo");
-
         document.getElementById("Startscreen").style.display = "none";
         document.getElementById("Endscreen").style.display = "none";
         document.getElementById("Game").style.display = "initial";
 
 
         console.log("starting");
+
         let canvas: HTMLCanvasElement | null = document.querySelector("canvas");
         if (!canvas)
             return;
@@ -63,8 +55,7 @@ namespace L_Endabgabe {
 
 
 
-
-        for (let i: number = 0; i < 20; i++) {
+        for (let i: number = 0; i < 1; i++) {
             let bird: Bird = new Bird(2);
             birdArray.push(bird);
         }
@@ -99,12 +90,10 @@ namespace L_Endabgabe {
                     snowball.size -= 0.2;
             }
 
-
-
             if (birdfood) {
                 birdfood.draw();
-                if (birdfood.size >= 2)   // gibt die Größe an, auf die es schrumpfen soll
-                    birdfood.size -= 0.2; // gibt an, um wie viel kleiner 
+                if (birdfood.size >= 2)   
+                    birdfood.size -= 0.2; 
 
                 if (birdfood.size <= 2 && birdfood.size >= 0.005)
                     birdfood.size -= 0.005;
@@ -115,8 +104,6 @@ namespace L_Endabgabe {
 
 
             }
-
-
 
         }
     }
@@ -138,11 +125,11 @@ namespace L_Endabgabe {
 
         for (let bird of birdArray) {
             if (birdIsNear(bird.position)) {
-                bird.job = TASK.FLYTOFOOD; //vllt this.job
-                bird.velocity = Vector.getDifference(new Vector(birdfood.position.x + Math.random() * (10 - 10) + 10, birdfood.foodPosition), bird.position);
-                bird.velocity.scale(0.01); //Strecke wird in Bereiche unterteilt
-                setTimeout(bird.isEating, 100 * fps); // wird mit scale multipliziert damit das 1 ergibt
-                // angegebene Zahl lässt Vogel auf dem Vektor entlangfliegen --> muss mulitpliziert mit scale = 1 sein
+                bird.job = TASK.FLYTOFOOD; 
+                bird.velocity = Vector.getDifference(new Vector(birdfood.position.x + Math.random() * (15 - 10) + 15, birdfood.foodPosition), bird.position);
+                bird.velocity.scale(0.01); 
+                setTimeout(bird.isEating, 100 * fps);
+                
 
 
                 if (bird.velocity.x != 0) {
@@ -226,7 +213,7 @@ namespace L_Endabgabe {
 
         let query: string = "name=" + _insertedName + "&highScore=" + _score;
         let response: Response = await fetch(serveradress + "?" + query);
-        //alert(response);
+
 
     }
 
@@ -235,13 +222,20 @@ namespace L_Endabgabe {
         console.log("Highscores ausgeben");
         let query: string = "command=retrieve";
         let response: Response = await fetch(serveradress + "?" + query);
-        let responseText: string = await response.text();
-        let finalresponse: any[] = JSON.parse(responseText);
+        let responseJson: string[] = await response.json();
+        for (let index = 0; index < responseJson.length; index++) {
+            delete responseJson[index]["_id"];
+        }
+        let sortedJson = responseJson.sort(({ score: aScore }: string, { score: bScore }: string)=> bScore - aScore);
+        let output = "";
+        for (let index = 0; index < sortedJson.length; index++) {
+            output += sortedJson[index].name + " - " + sortedJson[index].score + "\n";
+        }
 
         alert(responseText);
-        let orders: HTMLDivElement = <HTMLDivElement>document.querySelector("span#highscorelist");
-        orders.innerText = responseText;
+        let highscores: HTMLDivElement = <HTMLDivElement>document.querySelector("span#highscorelist");
+        highscores.innerText = responseText;
 
-        
+
     }
 }

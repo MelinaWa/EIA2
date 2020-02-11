@@ -6,7 +6,7 @@ Datum: 11.02.20
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert. */
 var L_Endabgabe;
 (function (L_Endabgabe) {
-    window.addEventListener("load", start);
+    window.addEventListener("load", startMainScreen);
     let serveradress = "https://eia2melina.herokuapp.com/";
     let snowflakeArray = [];
     let birdArray = [];
@@ -14,9 +14,7 @@ var L_Endabgabe;
     let birdfood;
     let fps = 20;
     let score = 100;
-    //let startbutton: HTMLButtonElement;
-    // function handleLoad(_event: Event): void {
-    function start(_event) {
+    function startMainScreen(_event) {
         document.getElementById("Endscreen").style.display = "none";
         document.getElementById("Game").style.display = "none";
         let startbutton = document.getElementById("start");
@@ -24,7 +22,6 @@ var L_Endabgabe;
         console.log("startbutton");
     }
     async function handleLoad(_event) {
-        console.log("hallo");
         document.getElementById("Startscreen").style.display = "none";
         document.getElementById("Endscreen").style.display = "none";
         document.getElementById("Game").style.display = "initial";
@@ -38,7 +35,7 @@ var L_Endabgabe;
         let highscorebutton = document.getElementById("highscorelistbutton");
         highscorebutton.addEventListener("click", gethighscorelist);
         document.getElementById("highscorelist").addEventListener("click", gethighscorelist);
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 1; i++) {
             let bird = new L_Endabgabe.Bird(2);
             birdArray.push(bird);
         }
@@ -65,8 +62,8 @@ var L_Endabgabe;
             }
             if (birdfood) {
                 birdfood.draw();
-                if (birdfood.size >= 2) // gibt die Größe an, auf die es schrumpfen soll
-                    birdfood.size -= 0.2; // gibt an, um wie viel kleiner 
+                if (birdfood.size >= 2)
+                    birdfood.size -= 0.2;
                 if (birdfood.size <= 2 && birdfood.size >= 0.005)
                     birdfood.size -= 0.005;
                 if (birdfood.position.y < birdfood.foodPosition) {
@@ -86,11 +83,10 @@ var L_Endabgabe;
         birdfood = new L_Endabgabe.Birdfood(2, birdfoodVector);
         for (let bird of birdArray) {
             if (birdIsNear(bird.position)) {
-                bird.job = L_Endabgabe.TASK.FLYTOFOOD; //vllt this.job
-                bird.velocity = L_Endabgabe.Vector.getDifference(new L_Endabgabe.Vector(birdfood.position.x + Math.random() * (10 - 10) + 10, birdfood.foodPosition), bird.position);
-                bird.velocity.scale(0.01); //Strecke wird in Bereiche unterteilt
-                setTimeout(bird.isEating, 100 * fps); // wird mit scale multipliziert damit das 1 ergibt
-                // angegebene Zahl lässt Vogel auf dem Vektor entlangfliegen --> muss mulitpliziert mit scale = 1 sein
+                bird.job = L_Endabgabe.TASK.FLYTOFOOD;
+                bird.velocity = L_Endabgabe.Vector.getDifference(new L_Endabgabe.Vector(birdfood.position.x + Math.random() * (15 - 10) + 15, birdfood.foodPosition), bird.position);
+                bird.velocity.scale(0.01);
+                setTimeout(bird.isEating, 100 * fps);
                 if (bird.velocity.x != 0) {
                     bird.job = L_Endabgabe.TASK.EAT;
                 }
@@ -145,17 +141,23 @@ var L_Endabgabe;
     async function sendtohighscorelist(_insertedName, _score) {
         let query = "name=" + _insertedName + "&highScore=" + _score;
         let response = await fetch(serveradress + "?" + query);
-        //alert(response);
     }
     async function gethighscorelist() {
         console.log("Highscores ausgeben");
         let query = "command=retrieve";
         let response = await fetch(serveradress + "?" + query);
-        let responseText = await response.text();
-        let finalresponse = JSON.parse(responseText);
+        let responseJson = await response.json();
+        for (let index = 0; index < responseJson.length; index++) {
+            delete responseJson[index]["_id"];
+        }
+        let sortedJson = responseJson.sort(({ score: aScore }, { score: bScore }) => bScore - aScore);
+        let output = "";
+        for (let index = 0; index < sortedJson.length; index++) {
+            output += sortedJson[index].name + " - " + sortedJson[index].score + "\n";
+        }
         alert(responseText);
-        let orders = document.querySelector("span#highscorelist");
-        orders.innerText = responseText;
+        let highscores = document.querySelector("span#highscorelist");
+        highscores.innerText = responseText;
     }
 })(L_Endabgabe || (L_Endabgabe = {}));
 //# sourceMappingURL=Main.js.map

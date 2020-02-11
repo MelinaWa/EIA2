@@ -6,7 +6,7 @@ span {
 	font-family: 'Bebas Neue', cursive;
 	letter-spacing: 0.02em;
 	border-style: solid;
-	margin: 1em 5em 1em 5em;
+	margin: 1em 5em 1em 20em;
 
 }
 
@@ -59,9 +59,14 @@ h1 {
 	margin: 1em 5em -1em 5em;
 }
 
+#start {
+
+	margin: 3em 1em 1em 16em;
+}
+
 button {
 	text-align: center;
-	margin: 3em 1em 1em 5em;
+	margin: 0em 1em 1em 16em;
 	box-shadow: inset 1px 14px 14px -1px #ffffff;
 	background-color: rgb(255, 255, 255);
 	border-radius: 15px;
