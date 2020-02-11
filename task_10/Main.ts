@@ -242,34 +242,6 @@ namespace L_Endabgabe {
         let orders: HTMLDivElement = <HTMLDivElement>document.querySelector("span#highscorelist");
         orders.innerText = responseText;
 
-
-
-        interface Highscore {
-            spieler: string;
-            score: string;
-        }
-
-        let final: Highscore[] = [];
-
-        for (let i: number = 0; i < finalresponse.length; i++) {
-            let entry: Highscore = { spieler: finalresponse[i].name, score: finalresponse[i].score };
-            console.log("test")
-            for (let j: number = 0; j > final.length; j++) {
-                console.log("test2") 
-                if (finalresponse[i].score > final[j].score) {
-                    final.splice(j, 0, entry);
-                    break;
-                }
-                else
-                    final.push(entry);
-
-            }
-
-            for (let m: number = 0; m < final.length; m++) {
-                let elem: HTMLParagraphElement = document.createElement("p");
-                elem.innerText = final[m].score + "  " + final[m].spieler;
-
-            }
-        }
+        
     }
 }

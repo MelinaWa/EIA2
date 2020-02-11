@@ -67,7 +67,7 @@ export namespace L_Endabgabe {
 
     async function retrieveOrders(): Promise<any[] | string> {
         // console.log("Asking DB about Orders ", orders.find());
-        let cursor: Mongo.Cursor = await highscores.find(); //cursor festlegen, mit dem auf ELemente gezeigt werden
+        let cursor: Mongo.Cursor = await highscores.find().sort({score: -1}); //cursor festlegen, mit dem auf ELemente gezeigt werden
         let answer: Promise<any[]> = await cursor.toArray(); // Jeder Eintrag soll in einem Array gespeichert werden
         console.log("DB CursorToArray", answer);
         if (answer != null) {

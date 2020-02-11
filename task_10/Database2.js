@@ -54,7 +54,7 @@ var L_Endabgabe;
     }
     async function retrieveOrders() {
         // console.log("Asking DB about Orders ", orders.find());
-        let cursor = await highscores.find(); //cursor festlegen, mit dem auf ELemente gezeigt werden
+        let cursor = await highscores.find().sort({ score: -1 }); //cursor festlegen, mit dem auf ELemente gezeigt werden
         let answer = await cursor.toArray(); // Jeder Eintrag soll in einem Array gespeichert werden
         console.log("DB CursorToArray", answer);
         if (answer != null) {

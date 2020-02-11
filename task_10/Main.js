@@ -156,24 +156,6 @@ var L_Endabgabe;
         alert(responseText);
         let orders = document.querySelector("span#highscorelist");
         orders.innerText = responseText;
-        let final = [];
-        for (let i = 0; i < finalresponse.length; i++) {
-            let entry = { spieler: finalresponse[i].name, score: finalresponse[i].score };
-            console.log("test");
-            for (let j = 0; j > final.length; j++) {
-                console.log("test2");
-                if (finalresponse[i].score > final[j].score) {
-                    final.splice(j, 0, entry);
-                    break;
-                }
-                else
-                    final.push(entry);
-            }
-            for (let m = 0; m < final.length; m++) {
-                let elem = document.createElement("p");
-                elem.innerText = final[m].score + "  " + final[m].spieler;
-            }
-        }
     }
 })(L_Endabgabe || (L_Endabgabe = {}));
 //# sourceMappingURL=Main.js.map
