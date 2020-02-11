@@ -35,7 +35,7 @@ var L_Endabgabe;
         let highscorebutton = document.getElementById("highscorelistbutton");
         highscorebutton.addEventListener("click", getFromDataBase);
         document.getElementById("highscorelist").addEventListener("click", getFromDataBase);
-        for (let i = 0; i < 1; i++) {
+        for (let i = 0; i < 20; i++) {
             let bird = new L_Endabgabe.Bird(2);
             birdArray.push(bird);
         }
