@@ -3,8 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Http = require("http");
 const Url = require("url");
 const Mongo = require("mongodb");
-var L_10;
-(function (L_10) {
+var L_Endabgabe;
+(function (L_Endabgabe) {
     let highscores;
     let databaseURL;
     let dbName = "dbName";
@@ -63,5 +63,5 @@ var L_10;
         else
             return "We encountered technical problems. Please try again later";
     }
-})(L_10 = exports.L_10 || (exports.L_10 = {}));
+})(L_Endabgabe = exports.L_Endabgabe || (exports.L_Endabgabe = {}));
 //# sourceMappingURL=Database2.js.map

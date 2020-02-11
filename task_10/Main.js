@@ -39,17 +39,17 @@ var L_Endabgabe;
         highscorebutton.addEventListener("click", gethighscorelist);
         document.getElementById("highscorelist").addEventListener("click", gethighscorelist);
         for (let i = 0; i < 1; i++) {
-            let bird = new Bird(2);
+            let bird = new L_Endabgabe.Bird(2);
             birdArray.push(bird);
         }
         for (let u = 0; u < 120; u++) {
-            let snowflake = new Snowflake(1.5);
+            let snowflake = new L_Endabgabe.Snowflake(1.5);
             snowflakeArray.push(snowflake);
         }
-        image = L_Endabgabe.crc2.getImageData(0, 0, 1320, 725);
+        L_Endabgabe.image = L_Endabgabe.crc2.getImageData(0, 0, 1320, 725);
         window.setInterval(update, 20);
         function update() {
-            L_Endabgabe.crc2.putImageData(image, 0, 0);
+            L_Endabgabe.crc2.putImageData(L_Endabgabe.image, 0, 0);
             for (let i = 0; i < birdArray.length; i++) {
                 birdArray[i].draw();
                 birdArray[i].move(1);
@@ -83,16 +83,16 @@ var L_Endabgabe;
     function handleClickRight(_event) {
         console.log(_event);
         let birdfoodVector = new L_Endabgabe.Vector(_event.offsetX, _event.offsetY);
-        birdfood = new Birdfood(2, birdfoodVector);
+        birdfood = new L_Endabgabe.Birdfood(2, birdfoodVector);
         for (let bird of birdArray) {
             if (birdIsNear(bird.position)) {
-                bird.job = TASK.FLYTOFOOD; //vllt this.job
+                bird.job = L_Endabgabe.TASK.FLYTOFOOD; //vllt this.job
                 bird.velocity = L_Endabgabe.Vector.getDifference(new L_Endabgabe.Vector(birdfood.position.x + Math.random() * (10 - 10) + 10, birdfood.foodPosition), bird.position);
                 bird.velocity.scale(0.01); //Strecke wird in Bereiche unterteilt
                 setTimeout(bird.isEating, 100 * fps); // wird mit scale multipliziert damit das 1 ergibt
                 // angegebene Zahl lässt Vogel auf dem Vektor entlangfliegen --> muss mulitpliziert mit scale = 1 sein
                 if (bird.velocity.x != 0) {
-                    bird.job = TASK.EAT;
+                    bird.job = L_Endabgabe.TASK.EAT;
                 }
             }
         }
@@ -107,7 +107,7 @@ var L_Endabgabe;
         console.log(_event);
         let snowballVector = new L_Endabgabe.Vector(_event.offsetX, _event.offsetY);
         //offset gibt die Werte relativ zum Dokument zurück (beim Scrollen)
-        snowball = new Snowball(6, snowballVector);
+        snowball = new L_Endabgabe.Snowball(6, snowballVector);
         window.setTimeout(getbirdHit, 400, snowballVector); // Parameter übergeben
     }
     function getbirdHit(_hotspot) {

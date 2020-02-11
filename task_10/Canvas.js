@@ -1,10 +1,10 @@
 "use strict";
-var L_10;
-(function (L_10) {
+var L_Endabgabe;
+(function (L_Endabgabe) {
     window.addEventListener("load", handleLoad);
     let crc2;
     let goldencut = 0.38;
-    L_10.moveablesArray = [];
+    L_Endabgabe.moveablesArray = [];
     function handleLoad(_event) {
         let canvas = document.querySelector("canvas");
         if (!canvas)
@@ -31,7 +31,7 @@ var L_10;
         //  drawstandingBird({ x: 340, y: 230 });
         //  drawstandingBird1({ x: 240, y: 230 });
         crc2.save();
-        L_10.image = crc2.getImageData(0, 0, canvas.width, canvas.height);
+        L_Endabgabe.image = crc2.getImageData(0, 0, canvas.width, canvas.height);
     }
     function drawBackground() {
         console.log("Background");
@@ -701,5 +701,5 @@ var L_10;
          crc2.closePath();
  
      } */
-})(L_10 || (L_10 = {}));
+})(L_Endabgabe || (L_Endabgabe = {}));
 //# sourceMappingURL=Canvas.js.map
