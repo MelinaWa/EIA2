@@ -64,7 +64,7 @@ namespace L_Endabgabe {
 
 
 
-        for (let i: number = 0; i < 1; i++) {
+        for (let i: number = 0; i < 20; i++) {
             let bird: Bird = new Bird(2);
             birdArray.push(bird);
         }
