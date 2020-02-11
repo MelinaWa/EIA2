@@ -130,7 +130,7 @@ var L_10;
     }
     L_10.end = end;
     function sendNameScore() {
-        console.log("Game over.");
+        console.log("end");
         let insertedname = prompt("Your Score: " + score + "\n Enter your name.");
         if (insertedname != null) {
             sendtolist(insertedname, score);

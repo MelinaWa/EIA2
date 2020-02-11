@@ -10,7 +10,6 @@ var L_10;
     let dbName = "dbName";
     let dbCollection = "dbCollection";
     databaseURL = "mongodb+srv://melina:eia@cluster0-ofcws.mongodb.net/test?retryWrites=true&w=majority";
-    databaseURL = "mongodb://localhost:27017";
     let port = process.env.PORT;
     if (port == undefined)
         port = 5001;

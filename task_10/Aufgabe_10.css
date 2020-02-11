@@ -26,7 +26,7 @@ h1 {
 
 }
 
-#text1 {
+.text1 {
 
 	font-size: 2em;
 	color: #ffffff;
@@ -37,7 +37,7 @@ h1 {
 	margin: 1em 5em 1em 5em;
 }
 
-#text2 {
+.text2 {
 	font-size: 2em;
 	color: #ffffff;
 	text-indent: 2em;
@@ -70,13 +70,4 @@ button {
 
 button:hover {
 	opacity: 1.2
-}
-
-input {
-	font-size: 2em;
-	color: #666666;
-	text-align: left;
-	font-family: 'Bebas Neue', cursive;
-	letter-spacing: 0.04em;
-
 }

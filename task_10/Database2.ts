@@ -13,9 +13,6 @@ export namespace L_10 {
 
     databaseURL = "mongodb+srv://melina:eia@cluster0-ofcws.mongodb.net/test?retryWrites=true&w=majority";
 
-    databaseURL = "mongodb://localhost:27017";
-
-
     let port: number | string | undefined = process.env.PORT;
     if (port == undefined)
         port = 5001;

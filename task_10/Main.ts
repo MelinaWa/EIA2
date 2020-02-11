@@ -202,7 +202,7 @@ namespace L_10 {
     }
 
     function sendNameScore(): void {
-        console.log("Game over.");
+        console.log("end");
         let insertedname: any = prompt("Your Score: " + score + "\n Enter your name.");
         if (insertedname != null) {
             sendtolist(insertedname, score);
