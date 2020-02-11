@@ -9,15 +9,12 @@ var L_10;
     let birdfood;
     let fps = 20;
     let score = 5000;
-    let startbutton;
-    // let response: Response = await fetch("Data.json");
-    // let offer: string = await response.text();
-    // let data: Data = JSON.parse(offer);
+    //let startbutton: HTMLButtonElement;
     // function handleLoad(_event: Event): void {
     function start(_event) {
         document.getElementById("Endscreen").style.display = "none";
         document.getElementById("Game").style.display = "none";
-        startbutton = document.getElementById("start");
+        let startbutton = document.getElementById("start");
         startbutton.addEventListener("click", handleLoad);
         console.log("startbutton");
     }
@@ -33,6 +30,8 @@ var L_10;
         L_10.crc2 = canvas.getContext("2d");
         canvas.addEventListener("click", handleClick);
         canvas.addEventListener("contextmenu", handleClickRight);
+        let highscorebutton = document.getElementById("highscorelistbutton");
+        highscorebutton.addEventListener("click", gethighscorelist);
         document.getElementById("highscorelist").addEventListener("click", gethighscorelist);
         for (let i = 0; i < 1; i++) {
             let bird = new L_10.Bird(2);
@@ -143,8 +142,6 @@ var L_10;
         let response = await fetch(serveradress + "?" + query);
         alert(response);
     }
-    let highscorebutton = document.getElementById("highscorelistbutton");
-    highscorebutton.addEventListener("click", gethighscorelist);
     async function gethighscorelist() {
         console.log("Highscores ausgeben");
         let query = "command=retrieve";

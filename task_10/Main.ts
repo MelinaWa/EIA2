@@ -15,10 +15,7 @@ namespace L_10 {
     let birdfood: Birdfood;
     let fps: number = 20;
     let score: number = 5000;
-    let startbutton: HTMLButtonElement;
-    // let response: Response = await fetch("Data.json");
-    // let offer: string = await response.text();
-    // let data: Data = JSON.parse(offer);
+    //let startbutton: HTMLButtonElement;
 
     // function handleLoad(_event: Event): void {
 
@@ -28,7 +25,7 @@ namespace L_10 {
         document.getElementById("Endscreen").style.display = "none";
         document.getElementById("Game").style.display = "none";
 
-        startbutton = <HTMLButtonElement>document.getElementById("start");
+        let startbutton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("start");
         startbutton.addEventListener("click", handleLoad);
         console.log("startbutton");
     }
@@ -51,7 +48,12 @@ namespace L_10 {
 
         canvas.addEventListener("click", handleClick);
         canvas.addEventListener("contextmenu", handleClickRight);
+
+        let highscorebutton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("highscorelistbutton");
+        highscorebutton.addEventListener("click", gethighscorelist);
+        
         document.getElementById("highscorelist").addEventListener("click", gethighscorelist);
+
 
 
 
@@ -220,14 +222,9 @@ namespace L_10 {
         alert(response);
 
     }
-    
-    
-
-    let highscorebutton = <HTMLButtonElement>document.getElementById("highscorelistbutton");
-    highscorebutton.addEventListener("click", gethighscorelist);
 
     async function gethighscorelist(): Promise<void> {
- 
+
         console.log("Highscores ausgeben");
         let query: string = "command=retrieve";
         let response: Response = await fetch(serveradress + "?" + query);
@@ -236,6 +233,6 @@ namespace L_10 {
         alert(responseText);
         let orders: HTMLDivElement = <HTMLDivElement>document.querySelector("span#highscorelist");
         orders.innerText = responseText;
-    
+
     }
 }
