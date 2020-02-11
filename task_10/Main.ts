@@ -58,7 +58,7 @@ namespace L_Endabgabe {
 
         let highscorebutton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("highscorelistbutton");
         highscorebutton.addEventListener("click", gethighscorelist);
-        
+
         document.getElementById("highscorelist").addEventListener("click", gethighscorelist);
 
 
@@ -236,10 +236,38 @@ namespace L_Endabgabe {
         let query: string = "command=retrieve";
         let response: Response = await fetch(serveradress + "?" + query);
         let responseText: string = await response.text();
+        let finalresponse: any[] = JSON.parse(responseText);
 
         alert(responseText);
         let orders: HTMLDivElement = <HTMLDivElement>document.querySelector("span#highscorelist");
         orders.innerText = responseText;
 
+
+
+        interface Highscore {
+            spieler: string;
+            score: string;
+        }
+
+        let final: Highscore[] = [];
+
+        for (let i: number = 0; i < finalresponse.length; i++) {
+            let entry: Highscore = { spieler: finalresponse[i].name, score: finalresponse[i].score };
+            for (let j: number = 0; 0 < final.length; j++) {
+                if (finalresponse[i].score > final[j].score) {
+                    final.splice(j, 0, entry);
+                    break;
+                }
+                else
+                    final.push(entry);
+
+            }
+
+            for (let m: number = 0; m < final.length; m++) {
+                let elem: HTMLParagraphElement = document.createElement("p");
+                elem.innerText = final[m].score + "  " + final[m].spieler;
+
+            }
+        }
     }
 }
