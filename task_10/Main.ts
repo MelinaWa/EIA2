@@ -7,7 +7,7 @@ namespace L_10 {
 
     export let crc2: CanvasRenderingContext2D;
 
-    let serveradress: "https://eia2melina.herokuapp.com/";
+    let serveradress: string = "https://eia2melina.herokuapp.com/";
 
     let snowflakeArray: Snowflake[] = [];
     let birdArray: Bird[] = [];
@@ -198,14 +198,14 @@ namespace L_10 {
     export function end(): void {
 
         let submit: HTMLButtonElement = <HTMLButtonElement>document.querySelector("button[type=submit]");
-        submit.addEventListener("click", sendNameScore);
+        submit.addEventListener("click", nameScore);
 
         document.getElementById("Game").style.display = "none";
         document.getElementById("Endscreen").style.display = "initial";
 
     }
 
-    function sendNameScore(): void {
+    function nameScore(): void {
         console.log("end");
         let insertedname: any = prompt("Your Score: " + score + "\n Enter your name.");
         if (insertedname != null) {
@@ -219,16 +219,22 @@ namespace L_10 {
         alert(response);
 
     }
+    
+    document.getElementById("highscorelist").addEventListener("click", gethighscorelist);
+
+    let highscorebutton = <HTMLButtonElement>document.getElementById("highscorelistbutton");
+    highscorebutton.addEventListener("click", gethighscorelist);
 
     async function gethighscorelist(): Promise<void> {
-
+ 
         console.log("Highscores ausgeben");
         let query: string = "command=retrieve";
         let response: Response = await fetch(serveradress + "?" + query);
         let responseText: string = await response.text();
 
         alert(responseText);
-        let orders: HTMLDivElement = <HTMLDivElement>document.querySelector("div#highscorelist");
+        let orders: HTMLDivElement = <HTMLDivElement>document.querySelector("span#highscorelist");
         orders.innerText = responseText;
+    
     }
 }

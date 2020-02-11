@@ -2,7 +2,7 @@
 var L_10;
 (function (L_10) {
     window.addEventListener("load", start);
-    let serveradress;
+    let serveradress = "https://eia2melina.herokuapp.com/";
     let snowflakeArray = [];
     let birdArray = [];
     let snowball;
@@ -125,12 +125,12 @@ var L_10;
     }
     function end() {
         let submit = document.querySelector("button[type=submit]");
-        submit.addEventListener("click", sendNameScore);
+        submit.addEventListener("click", nameScore);
         document.getElementById("Game").style.display = "none";
         document.getElementById("Endscreen").style.display = "initial";
     }
     L_10.end = end;
-    function sendNameScore() {
+    function nameScore() {
         console.log("end");
         let insertedname = prompt("Your Score: " + score + "\n Enter your name.");
         if (insertedname != null) {
@@ -142,13 +142,16 @@ var L_10;
         let response = await fetch(serveradress + "?" + query);
         alert(response);
     }
+    document.getElementById("highscorelist").addEventListener("click", gethighscorelist);
+    let highscorebutton = document.getElementById("highscorelistbutton");
+    highscorebutton.addEventListener("click", gethighscorelist);
     async function gethighscorelist() {
         console.log("Highscores ausgeben");
         let query = "command=retrieve";
         let response = await fetch(serveradress + "?" + query);
         let responseText = await response.text();
         alert(responseText);
-        let orders = document.querySelector("div#highscorelist");
+        let orders = document.querySelector("span#highscorelist");
         orders.innerText = responseText;
     }
 })(L_10 || (L_10 = {}));
