@@ -3,7 +3,7 @@ Name: Melina Wald
 Matrikel: 259225
 Datum: 19.10.2018
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. 
-Er wurde nicht kopiert und auch nicht diktiert. */
+Er wurde nicht kopiert und auch nicht diktiert. 
 
 namespace Aufgabe2 {
 
@@ -222,4 +222,4 @@ namespace Aufgabe2 {
 }
     document.addEventListener("DOMContentLoaded", (UNO)); 
 }
-    }}
+    }}*/

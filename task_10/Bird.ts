@@ -194,10 +194,10 @@ namespace L_10 {
     }
 
      function getRandomColor(): string { //wieso geht hier nicht private/pr./publ.?
-        let letters = '0123456789ABCDEF'.split('');
+        let sequence = '0123456789ABCDEF'.split('');
         let color: string = "#";
         for (let i = 0; i < 6; i++) {
-            color += letters[Math.round(Math.random() * 15)];
+            color += sequence[Math.round(Math.random() * 15)];
         }
         return color;
 

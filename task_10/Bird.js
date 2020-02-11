@@ -139,10 +139,10 @@ var L_10;
     }
     L_10.Bird = Bird;
     function getRandomColor() {
-        let letters = '0123456789ABCDEF'.split('');
+        let sequence = '0123456789ABCDEF'.split('');
         let color = "#";
         for (let i = 0; i < 6; i++) {
-            color += letters[Math.round(Math.random() * 15)];
+            color += sequence[Math.round(Math.random() * 15)];
         }
         return color;
     }

@@ -1,8 +1,13 @@
 namespace L_10 {
 
-    window.addEventListener("load", handleLoad);
+    window.addEventListener("load", start);
+
+
+    // window.addEventListener("load", handleLoad);
 
     export let crc2: CanvasRenderingContext2D;
+
+    let serveradress: "https://eia2melina.herokuapp.com/";
 
     let snowflakeArray: Snowflake[] = [];
     let birdArray: Bird[] = [];
@@ -10,16 +15,34 @@ namespace L_10 {
     let birdfood: Birdfood;
     let fps: number = 20;
     let score: number = 5000;
+    let startbutton: HTMLButtonElement;
     // let response: Response = await fetch("Data.json");
     // let offer: string = await response.text();
     // let data: Data = JSON.parse(offer);
 
     // function handleLoad(_event: Event): void {
-        
+
+
+    function start(_event: Event): void {
+
+        document.getElementById("Endscreen").style.display = "none";
+        document.getElementById("Game").style.display = "none";
+
+        startbutton = <HTMLButtonElement>document.getElementById("start");
+        startbutton.addEventListener("click", handleLoad);
+        console.log("startbutton");
+    }
+
+
     async function handleLoad(_event: Event): Promise<void> {
-        let submit: HTMLButtonElement = <HTMLButtonElement>document.querySelector("button[type=submit]");
-        submit.addEventListener("click", sendNameScore);
-        
+
+        console.log("hallo");
+
+        document.getElementById("Startscreen").style.display = "none";
+        document.getElementById("Endscreen").style.display = "none";
+        document.getElementById("Game").style.display = "initial";
+
+
         console.log("starting");
         let canvas: HTMLCanvasElement | null = document.querySelector("canvas");
         if (!canvas)
@@ -28,10 +51,10 @@ namespace L_10 {
 
         canvas.addEventListener("click", handleClick);
         canvas.addEventListener("contextmenu", handleClickRight);
-        
 
 
-        for (let i: number = 0; i < 20; i++) {
+
+        for (let i: number = 0; i < 1; i++) {
             let bird: Bird = new Bird(2);
             birdArray.push(bird);
         }
@@ -40,13 +63,6 @@ namespace L_10 {
             let snowflake: Snowflake = new Snowflake(1.5);
             snowflakeArray.push(snowflake);
 
-        }
-
-        window.setInterval(createScore, 1000);
-
-        function createScore(): void {
-            score--;
-            console.log(score);
         }
 
         image = crc2.getImageData(0, 0, 1320, 725);
@@ -95,49 +111,11 @@ namespace L_10 {
         }
     }
 
-    function sendNameScore(_event: MouseEvent): void {
-        console.log("NAME UND SCORE")
-    }
+    window.setInterval(createScore, 1000);
 
-
-    function handleClick(_event: MouseEvent): void {
-
+    function createScore(): void {
         score--;
-
-        console.log(_event);
-        let snowballVector: Vector = new Vector(_event.offsetX, _event.offsetY);
-        //offset gibt die Werte relativ zum Dokument zurück (beim Scrollen)
-        snowball = new Snowball(6, snowballVector);
-
-        window.setTimeout(getbirdHit, 400, snowballVector); // Parameter übergeben
-
-        //getbirdHit(snowballVector);
-
-
-    }
-
-    function getbirdHit(_hotspot: Vector): void { //_ wenns von außen kommt
-
-        for (let bird of birdArray) {
-
-            if (bird.birdIsHit(_hotspot)) {
-                deleteBird(bird);
-                return;
-            }
-        }
-
-    }
-
-    function deleteBird(_bird: Bird): void {
-        console.log("Vogel löschen")
-
-        let index: number = birdArray.indexOf(_bird);
-        // sucht bird im Array und schaut an welcher Stelle im Array der ist und gibt Stelle zurück
-        birdArray.splice(index, 1); // an der Stelle index wird ein Element gelöscht 
-        if (birdArray.length == 0) {
-            location.replace("Endscreen.html");
-
-        }
+        console.log(score);
     }
 
     function handleClickRight(_event: MouseEvent): void {
@@ -175,8 +153,73 @@ namespace L_10 {
 
     }
 
-    
+
+    function handleClick(_event: MouseEvent): void {
+
+        score--;
+
+        console.log(_event);
+        let snowballVector: Vector = new Vector(_event.offsetX, _event.offsetY);
+        //offset gibt die Werte relativ zum Dokument zurück (beim Scrollen)
+        snowball = new Snowball(6, snowballVector);
+
+        window.setTimeout(getbirdHit, 400, snowballVector); // Parameter übergeben
+
+    }
+
+    function getbirdHit(_hotspot: Vector): void {
+
+        for (let bird of birdArray) {
+
+            if (bird.birdIsHit(_hotspot)) {
+                deleteBird(bird);
+                return;
+            }
+        }
+
+    }
+
+    function deleteBird(_bird: Bird): void {
+        console.log("Vogel löschen")
+
+        let index: number = birdArray.indexOf(_bird);
+        // sucht bird im Array und schaut an welcher Stelle im Array der ist und gibt Stelle zurück
+        birdArray.splice(index, 1); // an der Stelle index wird ein Element gelöscht 
+        if (birdArray.length == 0) {
+            end();
+
+        }
+    }
+
+    export function end(): void {
+
+        let submit: HTMLButtonElement = <HTMLButtonElement>document.querySelector("button[type=submit]");
+        submit.addEventListener("click", sendNameScore);
+
+        document.getElementById("Game").style.display = "none";
+        document.getElementById("Endscreen").style.display = "initial";
+
+    }
+
+    function sendNameScore(): void {
+        console.log("Game over.");
+        let insertedname: any = prompt("Your Score: " + score + "\n Enter your name.");
+        if (insertedname != null) {
+            sendtolist(insertedname, score);
+        }
+
+    async function sendtolist(_insertedName: string, _score: number): Promise<void> {
+
+        let query: string = "name=" + _insertedName + "&highScore=" + _score;
+        let response: Response = await fetch(serveradress + "?" + query);
+        alert(response);
+
+    }
+
+
+
 
 
 }
+
 

@@ -15,19 +15,58 @@
     <script src="Snowflake.js"></script>
     <script src="Bird.js"></script>
     <script src="Canvas.js"></script>
-    <script src="Vector.js"></script>  
-    <script src="Database2.js"></script> 
-    
-      
-    
+    <script src="Vector.js"></script>
+    <script src="Database2.js"></script>
+
+    <div id="Game">
+
+       <!-- <canvas class="invisible" width=1320 height=725></canvas> -->
+        <canvas width=1320 height=725></canvas>
+
+    </div>
+
 </head>
 
-<body> 
-	
-    <canvas width=1320 height=725></canvas>
-    <body oncontextmenu="return false;">
-    <button style="visibility:hidden" type="submit">send</button>
+<body>
 
-</body>
+    <!-- <canvas width=1320 height=725></canvas> -->
+
+    <body oncontextmenu="return false;">
+
+        <div id="Startscreen">
+
+            <h1>Wintergame</h1>
+
+            <p id="text1">Throw Snowballs and try to hit all birds in a time as short as possible.
+                The faster you are the higher your score. Let's get started!</p>
+            </p>
+
+            <p id="text2">Left Click: Throw a Snowball</p>
+            <p id="text2">Right Click: Feed birds</p>
+
+            <a href=""><button id="highscorebutton" type="button">highscores</button></a>
+            <button id="start">start</button>
+
+        </div>
+
+        <div id="Endscreen">
+
+            <h1>Wintergame</h1>
+
+            <p id="text1">Throw Snowballs and try to hit all birds in a time as short as possible.
+                The faster you are the higher your score. Let's get started!</p>
+            </p>
+
+            <p id="text2">another round?</p>
+
+            <button onClick="window.location.reload()" id="start">restart</button>
+
+            <button type="submit">your name</button></a>
+
+            <button id="highscorelist">highscores</button></a>
+
+        </div>
+
+    </body>
 
 </html>

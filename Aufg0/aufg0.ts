@@ -1,4 +1,4 @@
-namespace Aufg0 {
+/*namespace Aufg0 {
         
     function hallo() {
         var i: string = prompt("Wie heisst du?");
@@ -10,4 +10,4 @@ namespace Aufg0 {
         }
     
     document.addEventListener('DOMContentLoaded',hallo);
-}
+}*/

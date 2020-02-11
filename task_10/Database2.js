@@ -7,21 +7,15 @@ var L_10;
 (function (L_10) {
     let highscores;
     let databaseURL;
-    let dbName = "Database";
-    let dbCollection = "Score";
-    let databaseUrl = "mongodb://localhost27017";
-    let serveradress;
-    if (process.argv[2] == "remote") {
-        databaseURL = "mongodb+srv://anyUser:anyPassword@clusterfuwa-pmutc.mongodb.net/test?retryWrites=true&w=majority";
-    }
-    else {
-        databaseURL = "mongodb://localhost:27017";
-    }
+    let dbName = "dbName";
+    let dbCollection = "dbCollection";
+    databaseURL = "mongodb+srv://melina:eia@cluster0-ofcws.mongodb.net/test?retryWrites=true&w=majority";
+    databaseURL = "mongodb://localhost:27017";
     let port = process.env.PORT;
     if (port == undefined)
         port = 5001;
     startServer(port);
-    connectToDatabase(databaseUrl);
+    connectToDatabase(databaseURL);
     function startServer(_port) {
         let server = Http.createServer();
         console.log("Server starting on port:" + _port);
@@ -32,7 +26,7 @@ var L_10;
         let options = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
-        highscores = mongoClient.db("dbName").collection("dbCollection");
+        highscores = mongoClient.db(dbName).collection(dbCollection);
         console.log("Database connection ", highscores != undefined);
     }
     async function handleRequest(_request, _response) {
@@ -43,7 +37,7 @@ var L_10;
             let url = Url.parse(_request.url, true);
             if (url.query["command"] == "retrieve") {
                 let report = await retrieveOrders();
-                if (report == "We encountered tecnical problems. Please try again later")
+                if (report == "We encountered technical problems. Please try again later")
                     _response.write(report);
                 else
                     _response.write(JSON.stringify(report));
@@ -52,7 +46,7 @@ var L_10;
                 console.log("urlQuery: ", url.query);
                 let jsonString = JSON.stringify(url.query);
                 _response.write(jsonString);
-                storescore(url.query);
+                highscores.insert(url.query);
                 console.log(jsonString);
             }
         }
@@ -67,10 +61,7 @@ var L_10;
             return answer;
         }
         else
-            return "We encountered tecnical problems. Please try again later";
-    }
-    function storescore(_score) {
-        highscores.insert(_score);
+            return "We encountered technical problems. Please try again later";
     }
 })(L_10 = exports.L_10 || (exports.L_10 = {}));
 //# sourceMappingURL=Database2.js.map

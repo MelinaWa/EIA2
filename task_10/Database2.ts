@@ -4,34 +4,25 @@ import * as Mongo from "mongodb";
 
 export namespace L_10 {
 
-    interface Database {
-        [type: string]: string | string[];
-    }
-
-    
     let highscores: Mongo.Collection;
     let databaseURL: string;
 
-    let dbName: string = "Database";
-    let dbCollection: string = "Score";
+    let dbName: string = "dbName";
+    let dbCollection: string = "dbCollection";
 
-    let databaseUrl: string = "mongodb://localhost27017";
-    let serveradress: "https://eia2melina.herokuapp.com/";
 
-    if (process.argv[2] == "remote") {
-        databaseURL = "mongodb+srv://anyUser:anyPassword@clusterfuwa-pmutc.mongodb.net/test?retryWrites=true&w=majority";
-    }
-    else {
-        databaseURL = "mongodb://localhost:27017";
-    }
+    databaseURL = "mongodb+srv://melina:eia@cluster0-ofcws.mongodb.net/test?retryWrites=true&w=majority";
+
+    databaseURL = "mongodb://localhost:27017";
+
 
     let port: number | string | undefined = process.env.PORT;
     if (port == undefined)
         port = 5001;
 
-        
+
     startServer(port);
-    connectToDatabase(databaseUrl);
+    connectToDatabase(databaseURL);
 
     function startServer(_port: number | string): void {
         let server: Http.Server = Http.createServer();
@@ -44,7 +35,7 @@ export namespace L_10 {
         let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
-        highscores = mongoClient.db("dbName").collection("dbCollection");
+        highscores = mongoClient.db(dbName).collection(dbCollection);
         console.log("Database connection ", highscores != undefined);
     }
 
@@ -56,21 +47,21 @@ export namespace L_10 {
 
         if (_request.url) {
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
-            
+
 
             if (url.query["command"] == "retrieve") {
                 let report: any[] | string = await retrieveOrders();
-                if (report == "We encountered tecnical problems. Please try again later")
+                if (report == "We encountered technical problems. Please try again later")
                     _response.write(report);
 
                 else
                     _response.write(JSON.stringify(report));
-            } 
+            }
             else {
                 console.log("urlQuery: ", url.query);
                 let jsonString: string = JSON.stringify(url.query);
                 _response.write(jsonString);
-                storescore(url.query);
+                highscores.insert(url.query);
                 console.log(jsonString);
             }
         }
@@ -86,10 +77,7 @@ export namespace L_10 {
             return answer;
         }
         else
-            return "We encountered tecnical problems. Please try again later";
+            return "We encountered technical problems. Please try again later";
     }
 
-    function storescore(_score: Highscorelist): void {
-        highscores.insert(_score);
-    }
 }

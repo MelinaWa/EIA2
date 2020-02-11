@@ -3,7 +3,7 @@ Name: Melina Wald
 Matrikel: 259225
 Datum: 11.11.2018
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. 
-Er wurde nicht kopiert und auch nicht diktiert. */
+Er wurde nicht kopiert und auch nicht diktiert. 
 
 namespace UNO3 {
 
@@ -19,9 +19,9 @@ namespace UNO3 {
     let speichern: Card[] = [];
 
     let colors: string[] = ["red", "green", "blue", "yellow"];
-    // Array für alle doppelten Karten (zb. rote 3) 
+    // Array fï¿½r alle doppelten Karten (zb. rote 3) 
     let values: string[] = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "+2", "X", "<=>"];
-    let cards: Card[] = // Array für alle einzelnen Karten, später sollen hier alle Karten reingepusht werden
+    let cards: Card[] = // Array fï¿½r alle einzelnen Karten, spï¿½ter sollen hier alle Karten reingepusht werden
         [{ color: "red", value: "0" },
             { color: "blue", value: "0" },
             { color: "green", value: "0" },
@@ -69,9 +69,9 @@ namespace UNO3 {
     function random(x: number): void { // x=Anzahl
         for (let anz: number = x; anz > 0; anz--) { // Anzahl die wir bei prompt eingegeben haben wird 
             // bei jedem Durchlauf um 1 abgezogen 
-            let r: number = Math.floor(Math.random() * (cards.length - 1)); // Karte wird aus cards gelöscht
+            let r: number = Math.floor(Math.random() * (cards.length - 1)); // Karte wird aus cards gelï¿½scht
             handcards.push(cards[r]);
-            cards.splice(r, 1); // An der Position r wird die nächste Karte abgezogen
+            cards.splice(r, 1); // An der Position r wird die nï¿½chste Karte abgezogen
         }
     }
 
@@ -118,17 +118,18 @@ namespace UNO3 {
     }
     function displayCards(): void {
         document.getElementById("Cards").innerHTML = "";
-        for (let h: number = 0; h < handcards.length; h++) { // h = rechne solange bis die Anzahl der Länge des Arrays erreicht ist 
+        for (let h: number = 0; h < handcards.length; h++) { // h = rechne solange bis die Anzahl der Lï¿½nge des Arrays erreicht ist 
             let div: HTMLElement = document.createElement("div"); // erstelle mir im html ein div
-            document.getElementById("Cards").appendChild(div); // Kind erstellen für id Cards 
+            document.getElementById("Cards").appendChild(div); // Kind erstellen fï¿½r id Cards 
             div.innerHTML = handcards[h].value; // schreibe mir die Werte der Handkarten in meine divs rein
-            let id: string = h.toString(); // gibt Wert zurück
+            let id: string = h.toString(); // gibt Wert zurï¿½ck
             div.setAttribute("id", id); 
-            div.classList.add("Cards");  // Klasse erstellen (für Farben im CSS) 
-            div.classList.add(handcards[h].color); // füge den zufällig gewählten Farben der Handkarten die richtige Farbe hinzu 
+            div.classList.add("Cards");  // Klasse erstellen (fï¿½r Farben im CSS) 
+            div.classList.add(handcards[h].color); // fï¿½ge den zufï¿½llig gewï¿½hlten Farben der Handkarten die richtige Farbe hinzu 
             div.addEventListener("click", playcard); // Installiere Event Listener auf div 
 
         }
     }
 
 }
+*/
