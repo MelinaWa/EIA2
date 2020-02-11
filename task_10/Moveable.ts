@@ -1,4 +1,5 @@
-namespace L_10 {
+namespace L_Endabgabe {
+  
   export abstract class Moveable {
     protected position: Vector;
     protected velocity: Vector;

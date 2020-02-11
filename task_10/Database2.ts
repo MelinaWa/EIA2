@@ -2,7 +2,7 @@ import * as Http from "http";
 import * as Url from "url";
 import * as Mongo from "mongodb";
 
-export namespace L_10 {
+export namespace L_Endabgabe {
 
     let highscores: Mongo.Collection;
     let databaseURL: string;

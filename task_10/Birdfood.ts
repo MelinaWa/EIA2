@@ -1,4 +1,4 @@
-namespace L_10 {
+namespace L_Endabgabe {
 
     export class Birdfood extends Moveable { //weil die move hier drin ist 
         public position: Vector;

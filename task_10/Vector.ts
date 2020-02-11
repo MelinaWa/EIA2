@@ -1,4 +1,4 @@
-namespace L_10 {
+namespace L_Endabgabe {
     export class Vector {
         public x: number;
         public y: number;

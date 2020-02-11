@@ -1,6 +1,6 @@
 "use strict";
-var L_10;
-(function (L_10) {
+var L_Endabgabe;
+(function (L_Endabgabe) {
     class Vector {
         constructor(_x = 0, _y = 0) {
             this.set(_x, _y);
@@ -35,6 +35,6 @@ var L_10;
             return Math.hypot(this.x, this.y);
         }
     }
-    L_10.Vector = Vector;
-})(L_10 || (L_10 = {}));
+    L_Endabgabe.Vector = Vector;
+})(L_Endabgabe || (L_Endabgabe = {}));
 //# sourceMappingURL=Vector.js.map

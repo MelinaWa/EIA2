@@ -1,4 +1,5 @@
-namespace L_10 {
+namespace L_Endabgabe {
+    
     interface Vector {
         x: number;
         y: number;

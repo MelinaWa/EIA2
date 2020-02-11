@@ -1,4 +1,11 @@
-namespace L_10 {
+
+/*Aufgabe: Endabgabe
+Name: Melina Wald
+Matrikel: 259225
+Datum: 11.02.20
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert. */
+
+namespace L_Endabgabe {
 
     window.addEventListener("load", start);
 

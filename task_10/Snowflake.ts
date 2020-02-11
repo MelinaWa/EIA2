@@ -1,4 +1,4 @@
-namespace L_10 {
+namespace L_Endabgabe {
     export class Snowflake extends Moveable {
         public position: Vector; // weil Moveable auch public ist
         public velocity: Vector;
