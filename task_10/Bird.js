@@ -14,8 +14,6 @@ var L_Endabgabe;
                 this.velocity = new L_Endabgabe.Vector(0, 0);
             };
             console.log("Bird constructor");
-            // if (_position)
-            //     this.position = _position;
             this.position = new L_Endabgabe.Vector(Math.random() * L_Endabgabe.crc2.canvas.width, Math.floor(Math.random() * 400));
             // Math Random für Verteilung Breite * Höhe Canvas, Wert (größten & aufgerundet) * random Nr *600 (Verteilung auf Höhe des Canvas)
             this.velocity = new L_Endabgabe.Vector(Math.random() - 1 * 5, (Math.random() * 2 + Math.random() - 2));
@@ -103,14 +101,6 @@ var L_Endabgabe;
                 L_Endabgabe.crc2.fillStyle = this.bodycolor;
                 L_Endabgabe.crc2.fill();
                 L_Endabgabe.crc2.closePath();
-                //wings
-                /* crc2.beginPath();
-                 crc2.moveTo(15, 20);
-                 crc2.lineTo(-15, 15);
-                 crc2.lineTo(-2, 50);
-                 crc2.fillStyle = "#af8a54";
-                 crc2.fill();
-                 crc2.closePath(); */
                 //legs 
                 L_Endabgabe.crc2.beginPath();
                 L_Endabgabe.crc2.moveTo(-10, 42);

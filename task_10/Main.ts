@@ -21,7 +21,7 @@ namespace L_Endabgabe {
     let snowball: Snowball;
     let birdfood: Birdfood;
     let fps: number = 20;
-    let score: number = 500;
+    let score: number = 100;
     //let startbutton: HTMLButtonElement;
 
     // function handleLoad(_event: Event): void {
@@ -64,7 +64,7 @@ namespace L_Endabgabe {
 
 
 
-        for (let i: number = 0; i < 20; i++) {
+        for (let i: number = 0; i < 1; i++) {
             let bird: Bird = new Bird(2);
             birdArray.push(bird);
         }

@@ -24,11 +24,6 @@ namespace L_Endabgabe {
             console.log("Bird constructor");
 
 
-           // if (_position)
-           //     this.position = _position;
-
-
-          
              this.position = new Vector(Math.random() * crc2.canvas.width, Math.floor(Math.random() * 400));
             // Math Random für Verteilung Breite * Höhe Canvas, Wert (größten & aufgerundet) * random Nr *600 (Verteilung auf Höhe des Canvas)
 
@@ -144,15 +139,6 @@ namespace L_Endabgabe {
                 crc2.fillStyle = this.bodycolor;
                 crc2.fill();
                 crc2.closePath();
-
-                //wings
-                /* crc2.beginPath();
-                 crc2.moveTo(15, 20);
-                 crc2.lineTo(-15, 15);
-                 crc2.lineTo(-2, 50);
-                 crc2.fillStyle = "#af8a54";
-                 crc2.fill();
-                 crc2.closePath(); */
 
                 //legs 
                 crc2.beginPath();

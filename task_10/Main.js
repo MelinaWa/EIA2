@@ -13,7 +13,7 @@ var L_Endabgabe;
     let snowball;
     let birdfood;
     let fps = 20;
-    let score = 500;
+    let score = 100;
     //let startbutton: HTMLButtonElement;
     // function handleLoad(_event: Event): void {
     function start(_event) {
@@ -38,7 +38,7 @@ var L_Endabgabe;
         let highscorebutton = document.getElementById("highscorelistbutton");
         highscorebutton.addEventListener("click", gethighscorelist);
         document.getElementById("highscorelist").addEventListener("click", gethighscorelist);
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 1; i++) {
             let bird = new L_Endabgabe.Bird(2);
             birdArray.push(bird);
         }
