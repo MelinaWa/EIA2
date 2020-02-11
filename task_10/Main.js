@@ -8,7 +8,7 @@ var L_10;
     let snowball;
     let birdfood;
     let fps = 20;
-    let score = 5000;
+    let score = 500;
     //let startbutton: HTMLButtonElement;
     // function handleLoad(_event: Event): void {
     function start(_event) {

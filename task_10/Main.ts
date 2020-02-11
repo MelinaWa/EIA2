@@ -14,7 +14,7 @@ namespace L_10 {
     let snowball: Snowball;
     let birdfood: Birdfood;
     let fps: number = 20;
-    let score: number = 5000;
+    let score: number = 500;
     //let startbutton: HTMLButtonElement;
 
     // function handleLoad(_event: Event): void {
