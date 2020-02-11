@@ -1,6 +1,35 @@
-span {
+span { border: solid 2px rgb(255, 255, 255);
+		position: absolute;
+		left: 1150px;
+		top:26px;
+		height: 620px;
+		width: 250px;
+		color:white;
+		line-height: 50px;
+		background-image: linear-gradient(to right, #c6acde, #bcabe1, #b2aae3, #a6a9e5, #99a9e6, #84b1ef, #69baf5, #48c2f6, #00d4f1, #20e3de, #66eec3, #a2f6a6);
+}
+
+#NameID {font-family: 'Amatic SC', cursive;
+font-size:30px;
+text-align: center;
+color: white;
+}
+
+
+#PunkteID {font-family: 'Amatic SC', cursive;
+font-size:30px;
+text-align: center;
+color: #f9b1fc;
+
+
+#start {
 
 	
+}
+
+margin: 5em 10em 1em 5em;
+
+
 }
 
 #Startscreen {
