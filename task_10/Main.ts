@@ -51,6 +51,7 @@ namespace L_10 {
 
         canvas.addEventListener("click", handleClick);
         canvas.addEventListener("contextmenu", handleClickRight);
+        document.getElementById("highscorelist").addEventListener("click", gethighscorelist);
 
 
 
@@ -220,7 +221,7 @@ namespace L_10 {
 
     }
     
-    document.getElementById("highscorelist").addEventListener("click", gethighscorelist);
+    
 
     let highscorebutton = <HTMLButtonElement>document.getElementById("highscorelistbutton");
     highscorebutton.addEventListener("click", gethighscorelist);

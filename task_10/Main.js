@@ -33,6 +33,7 @@ var L_10;
         L_10.crc2 = canvas.getContext("2d");
         canvas.addEventListener("click", handleClick);
         canvas.addEventListener("contextmenu", handleClickRight);
+        document.getElementById("highscorelist").addEventListener("click", gethighscorelist);
         for (let i = 0; i < 1; i++) {
             let bird = new L_10.Bird(2);
             birdArray.push(bird);
@@ -142,7 +143,6 @@ var L_10;
         let response = await fetch(serveradress + "?" + query);
         alert(response);
     }
-    document.getElementById("highscorelist").addEventListener("click", gethighscorelist);
     let highscorebutton = document.getElementById("highscorelistbutton");
     highscorebutton.addEventListener("click", gethighscorelist);
     async function gethighscorelist() {
