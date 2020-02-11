@@ -218,20 +218,18 @@ namespace L_Endabgabe {
 
     async function gethighscorelist(): Promise<void> {
 
-        console.log("Highscores ausgeben");
         let query: string = "command=retrieve";
         let response: Response = await fetch(serveradress + "?" + query);
         let responseJson: string[] = await response.json();
         for (let index = 0; index < responseJson.length; index++) {
             delete responseJson[index]["_id"];
         }
-        let sortedJson = responseJson.sort(({ score: aScore }: string, { score: bScore }: string)=> bScore - aScore);
+        let sortedJson = responseJson.sort(({ score: score_1 }: string, { score: score_2 }: string) => score_1 - score_2);
         let responseText = "";
         for (let index = 0; index < sortedJson.length; index++) {
-            responseText += sortedJson[index].name + " - " + sortedJson[index].score + "\n";
+            responseText += sortedJson[index].name + " – " + sortedJson[index].score + "\n";
         }
 
-        alert(responseText);
         let highscores: HTMLDivElement = <HTMLDivElement>document.querySelector("span#highscorelist");
         highscores.innerText = responseText;
 

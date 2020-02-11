@@ -143,19 +143,17 @@ var L_Endabgabe;
         let response = await fetch(serveradress + "?" + query);
     }
     async function gethighscorelist() {
-        console.log("Highscores ausgeben");
         let query = "command=retrieve";
         let response = await fetch(serveradress + "?" + query);
         let responseJson = await response.json();
         for (let index = 0; index < responseJson.length; index++) {
             delete responseJson[index]["_id"];
         }
-        let sortedJson = responseJson.sort(({ score: aScore }, { score: bScore }) => bScore - aScore);
+        let sortedJson = responseJson.sort(({ score: score_1 }, { score: score_2 }) => score_1 - score_2);
         let responseText = "";
         for (let index = 0; index < sortedJson.length; index++) {
-            responseText += sortedJson[index].name + " - " + sortedJson[index].score + "\n";
+            responseText += sortedJson[index].name + " – " + sortedJson[index].score + "\n";
         }
-        alert(responseText);
         let highscores = document.querySelector("span#highscorelist");
         highscores.innerText = responseText;
     }

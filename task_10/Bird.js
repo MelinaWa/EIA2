@@ -9,36 +9,31 @@ var L_Endabgabe;
     })(TASK = L_Endabgabe.TASK || (L_Endabgabe.TASK = {}));
     class Bird extends L_Endabgabe.Moveable {
         constructor(_size, _position) {
-            super(_position); // ruft die Position aus der Moveable auf
+            super(_position);
             this.isEating = () => {
                 this.velocity = new L_Endabgabe.Vector(0, 0);
             };
             console.log("Bird constructor");
             this.position = new L_Endabgabe.Vector(Math.random() * L_Endabgabe.crc2.canvas.width, Math.floor(Math.random() * 400));
-            // Math Random für Verteilung Breite * Höhe Canvas, Wert (größten & aufgerundet) * random Nr *600 (Verteilung auf Höhe des Canvas)
             this.velocity = new L_Endabgabe.Vector(Math.random() - 1 * 5, (Math.random() * 2 + Math.random() - 2));
-            // -1 = vorwärts, 7 = Geschw. -2 und +2 (gehen langsam hoch und runter)
             this.bodycolor = getRandomColor();
         }
         draw() {
             if (this.job == TASK.EAT) {
-                //console.log("EAT");
                 setTimeout(() => {
                     this.job = TASK.FLY;
-                    this.velocity = new L_Endabgabe.Vector(Math.random() - 1 * 6, (Math.random() * 2) + Math.random() - 1);
-                    //console.log("FLYYYYAWAAYYYY");
-                }, 5000); // anonyme Funktion, die auf das setTimeout zugreift
+                    this.velocity = new L_Endabgabe.Vector(Math.random() - 1 * 5, (Math.random() * 2) + Math.random() - 1);
+                }, 5000);
             }
             //body
             L_Endabgabe.crc2.save();
             L_Endabgabe.crc2.translate(this.position.x, this.position.y);
+            //backward
             if (this.velocity.x >= 0.1) {
                 L_Endabgabe.crc2.scale(-1, 1);
-                //console.log("Rückwärts");
-            }
+            } //forward
             if (this.velocity.x <= -0.1) {
                 L_Endabgabe.crc2.scale(1, 1);
-                //console.log("Vorwärts");
             }
             if (this.job != TASK.EAT) {
                 //birdhead
@@ -52,7 +47,7 @@ var L_Endabgabe;
                 L_Endabgabe.crc2.fillStyle = "#3673a4";
                 L_Endabgabe.crc2.fill();
                 L_Endabgabe.crc2.closePath();
-                //bill//Schnabel
+                //bill
                 L_Endabgabe.crc2.beginPath();
                 L_Endabgabe.crc2.moveTo(-36, 10);
                 L_Endabgabe.crc2.lineTo(-50, 1);
@@ -60,6 +55,7 @@ var L_Endabgabe;
                 L_Endabgabe.crc2.fillStyle = "orange";
                 L_Endabgabe.crc2.fill();
                 L_Endabgabe.crc2.closePath();
+                //body
                 L_Endabgabe.crc2.beginPath();
                 L_Endabgabe.crc2.ellipse(0, 30, 30, 15, Math.PI / 1, 0, 2 * Math.PI);
                 L_Endabgabe.crc2.fillStyle = this.bodycolor;
@@ -74,7 +70,7 @@ var L_Endabgabe;
                 L_Endabgabe.crc2.closePath();
             }
             if (this.job == TASK.EAT) {
-                //Schnabel
+                //bill
                 L_Endabgabe.crc2.beginPath();
                 L_Endabgabe.crc2.moveTo(-65, 38);
                 L_Endabgabe.crc2.lineTo(-55, 22);
@@ -120,11 +116,9 @@ var L_Endabgabe;
             L_Endabgabe.crc2.restore();
         }
         birdIsHit(_hotspot) {
-            this.hitsize = 40; // radius, indem sie getroffen werden
+            this.hitsize = 40;
             let difference = new L_Endabgabe.Vector(_hotspot.x - this.position.x, _hotspot.y - this.position.y);
             return (Math.abs(difference.x) < this.hitsize && Math.abs(difference.y) < this.hitsize);
-            //Entfernung vertikal & horizontal Differenzvektor*/
-            // absoluter Wert (Betrag) Entfernung
         }
     }
     L_Endabgabe.Bird = Bird;

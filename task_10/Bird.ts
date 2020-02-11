@@ -14,38 +14,38 @@ namespace L_Endabgabe {
         private bodycolor: string;
         private hitsize: number;
         public target: Vector;
-        public job: TASK; // = TASK.FLY;
+        public job: TASK;
 
-        public constructor(_size: number, _position?: Vector) { // position muss nicht genutzt werden, ist optional
+        public constructor(_size: number, _position?: Vector) {
 
 
-           super(_position); // ruft die Position aus der Moveable auf
+            super(_position);
 
             console.log("Bird constructor");
 
 
-             this.position = new Vector(Math.random() * crc2.canvas.width, Math.floor(Math.random() * 400));
-            // Math Random für Verteilung Breite * Höhe Canvas, Wert (größten & aufgerundet) * random Nr *600 (Verteilung auf Höhe des Canvas)
+            this.position = new Vector(Math.random() * crc2.canvas.width, Math.floor(Math.random() * 400));
+
 
             this.velocity = new Vector(Math.random() - 1 * 5, (Math.random() * 2 + Math.random() - 2));
-            // -1 = vorwärts, 7 = Geschw. -2 und +2 (gehen langsam hoch und runter)
+
             this.bodycolor = getRandomColor();
-            
+
 
         }
 
 
         public draw(): void {
 
-            
+
 
             if (this.job == TASK.EAT) {
-                //console.log("EAT");
+               
                 setTimeout(() => {
                     this.job = TASK.FLY;
-                    this.velocity = new Vector(Math.random() - 1 * 6, (Math.random() * 2) + Math.random() - 1);
-                    //console.log("FLYYYYAWAAYYYY");
-                }, 5000); // anonyme Funktion, die auf das setTimeout zugreift
+                    this.velocity = new Vector(Math.random() - 1 * 5, (Math.random() * 2) + Math.random() - 1);
+                    
+                }, 5000); 
             }
 
             //body
@@ -53,20 +53,19 @@ namespace L_Endabgabe {
             crc2.translate(this.position.x, this.position.y);
 
 
-
+            //backward
             if (this.velocity.x >= 0.1) {
                 crc2.scale(-1, 1);
-                //console.log("Rückwärts");
-            }
+                
+            }//forward
             if (this.velocity.x <= -0.1) {
                 crc2.scale(1, 1);
-                //console.log("Vorwärts");
+                
             }
 
             if (this.job != TASK.EAT) {
 
                 //birdhead
-
                 crc2.beginPath();
                 crc2.arc(-25, 20, 15, 0, 2 * Math.PI);
                 crc2.fillStyle = "#af8a54";
@@ -79,8 +78,7 @@ namespace L_Endabgabe {
                 crc2.fill();
                 crc2.closePath();
 
-                //bill//Schnabel
-
+                //bill
                 crc2.beginPath();
                 crc2.moveTo(-36, 10);
                 crc2.lineTo(-50, 1);
@@ -89,6 +87,7 @@ namespace L_Endabgabe {
                 crc2.fill();
                 crc2.closePath();
 
+                //body
                 crc2.beginPath();
                 crc2.ellipse(0, 30, 30, 15, Math.PI / 1, 0, 2 * Math.PI);
                 crc2.fillStyle = this.bodycolor;
@@ -108,7 +107,7 @@ namespace L_Endabgabe {
             }
             if (this.job == TASK.EAT) {
 
-                //Schnabel
+                //bill
                 crc2.beginPath();
                 crc2.moveTo(-65, 38);
                 crc2.lineTo(-55, 22);
@@ -118,7 +117,6 @@ namespace L_Endabgabe {
                 crc2.closePath();
 
                 //birdhead
-
                 crc2.beginPath();
                 crc2.arc(-40, 20, 15, 0, 2 * Math.PI);
                 crc2.fillStyle = "#af8a54";
@@ -164,22 +162,21 @@ namespace L_Endabgabe {
         }
 
         public birdIsHit(_hotspot: Vector): boolean {
-            this.hitsize = 40; // radius, indem sie getroffen werden
+            this.hitsize = 40; 
             let difference: Vector = new Vector(_hotspot.x - this.position.x, _hotspot.y - this.position.y);
             return (Math.abs(difference.x) < this.hitsize && Math.abs(difference.y) < this.hitsize);
-            //Entfernung vertikal & horizontal Differenzvektor*/
-            // absoluter Wert (Betrag) Entfernung
+            
 
 
         }
 
-        public isEating: Function = (): void => { // Sonderfall, findet sonst das isPicking nicht mehr 
+        public isEating: Function = (): void => { // Sonderfall
             this.velocity = new Vector(0, 0);
 
         }
     }
 
-     function getRandomColor(): string { //wieso geht hier nicht private/pr./publ.?
+    function getRandomColor(): string { 
         let sequence = '0123456789ABCDEF'.split('');
         let color: string = "#";
         for (let i = 0; i < 6; i++) {
