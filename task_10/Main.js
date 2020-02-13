@@ -84,7 +84,6 @@ var L_Endabgabe;
         birdfood = new L_Endabgabe.Birdfood(2, birdfoodVector);
         for (let bird of birdArray) {
             if (birdIsNear(bird.position)) {
-                bird.job = L_Endabgabe.TASK.FLYTOFOOD;
                 bird.velocity = L_Endabgabe.Vector.getDifference(new L_Endabgabe.Vector(birdfood.position.x + Math.random() * (15 - 10) + 15, birdfood.foodPosition), bird.position);
                 bird.velocity.scale(0.01);
                 setTimeout(bird.isEating, 100 * fps);
@@ -97,7 +96,7 @@ var L_Endabgabe;
     function birdIsNear(_hotspot) {
         let nearsize = 200;
         let getDifference = L_Endabgabe.Vector.getDifference(_hotspot, new L_Endabgabe.Vector(birdfood.position.x, birdfood.foodPosition));
-        return (nearsize > getDifference.length); //vllt >= 
+        return (nearsize > getDifference.length);
     }
     /// Throw Snowball ///
     function handleClick(_event) {
@@ -111,7 +110,6 @@ var L_Endabgabe;
         for (let bird of birdArray) {
             if (bird.birdIsHit(_hotspot)) {
                 deleteBird(bird);
-                return;
             }
         }
     }

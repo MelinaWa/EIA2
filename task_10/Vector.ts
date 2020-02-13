@@ -13,7 +13,7 @@ namespace L_Endabgabe {
             this.y = _y;
         }
 
-        public scale(_factor: number): void {
+        public scale(_factor: number): void { 
             this.x *= _factor;
             this.y *= _factor;
         }
@@ -25,9 +25,7 @@ namespace L_Endabgabe {
 
         public random(_minLength: number, _maxLength: number): void {
             let length: number = _minLength + Math.random() * (_maxLength - _minLength);
-            let direction: number = Math.random() * 2 * Math.PI;
-
-            this.set(Math.cos(direction), Math.sin(direction));
+            
             this.scale(length);
         }
 
@@ -37,7 +35,7 @@ namespace L_Endabgabe {
         }
 
         public static getDifference(_vector0: Vector, _vector1: Vector): Vector {
-            return new Vector(_vector0.x - _vector0.y, _vector0.y - _vector1.y);
+            return new Vector(_vector0.x - _vector0.y, _vector0.y - _vector1.y); 
         }
     
         public get length (): number { 

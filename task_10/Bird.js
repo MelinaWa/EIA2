@@ -4,8 +4,7 @@ var L_Endabgabe;
     let TASK;
     (function (TASK) {
         TASK[TASK["FLY"] = 0] = "FLY";
-        TASK[TASK["FLYTOFOOD"] = 1] = "FLYTOFOOD";
-        TASK[TASK["EAT"] = 2] = "EAT";
+        TASK[TASK["EAT"] = 1] = "EAT";
     })(TASK = L_Endabgabe.TASK || (L_Endabgabe.TASK = {}));
     class Bird extends L_Endabgabe.Moveable {
         constructor(_size, _position) {
@@ -14,7 +13,7 @@ var L_Endabgabe;
                 this.velocity = new L_Endabgabe.Vector(0, 0);
             };
             console.log("Bird constructor");
-            this.position = new L_Endabgabe.Vector(Math.random() * L_Endabgabe.crc2.canvas.width, Math.floor(Math.random() * 400));
+            this.position = new L_Endabgabe.Vector(Math.random() * L_Endabgabe.crc2.canvas.width, Math.floor(Math.random() * 700));
             this.velocity = new L_Endabgabe.Vector(Math.random() - 1 * 5, (Math.random() * 2 + Math.random() - 2));
             this.bodycolor = getRandomColor();
         }
@@ -22,8 +21,8 @@ var L_Endabgabe;
             if (this.job == TASK.EAT) {
                 setTimeout(() => {
                     this.job = TASK.FLY;
-                    this.velocity = new L_Endabgabe.Vector(Math.random() - 1 * 5, (Math.random() * 2) + Math.random() - 1);
-                }, 5000);
+                    this.velocity = new L_Endabgabe.Vector(Math.random() - 1 * 6, (Math.random() * 2) + Math.random() - 2);
+                }, 6000);
             }
             //body
             L_Endabgabe.crc2.save();

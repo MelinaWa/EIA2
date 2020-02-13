@@ -28,7 +28,6 @@ var L_Endabgabe;
         highscores = mongoClient.db(dbName).collection(dbCollection);
         console.log("Database connection ", highscores != undefined);
     }
-    //Anfrage
     async function handleRequest(_request, _response) {
         console.log("What's up?");
         _response.setHeader("content-type", "text/html; charset=utf-8");
@@ -53,7 +52,7 @@ var L_Endabgabe;
         _response.end();
     }
     async function retrieveOrders() {
-        let cursor = await highscores.find().sort({ score: -1 });
+        let cursor = await highscores.find().sort({ highScore: -1 }); ///
         let answer = await cursor.toArray();
         console.log("DB CursorToArray", answer);
         if (answer != null) {

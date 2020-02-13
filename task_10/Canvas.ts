@@ -8,8 +8,6 @@ namespace L_Endabgabe {
     window.addEventListener("load", handleLoad);
     let crc2: CanvasRenderingContext2D;
     let goldencut: number = 0.38;
-    export let moveable: Moveable;
-    export let moveablesArray: Moveable[] = [];
     export let image: ImageData;
 
     function handleLoad(_event: Event): void {
@@ -22,8 +20,8 @@ namespace L_Endabgabe {
         let posMountains: Vector = { x: 0, y: horizon };
 
         drawBackground();
-        drawSun({ x: 1200, y: 75 }); // Pos. 
-        drawCloud({ x: 200, y: 125 }, { x: 200, y: 85 }); // Pos. & Größe
+        drawSun({ x: 1200, y: 75 });  
+        drawCloud({ x: 200, y: 125 }, { x: 200, y: 85 });
         drawCloud({ x: 550, y: 110 }, { x: 250, y: 75 });
         drawCloud({ x: 900, y: 140 }, { x: 220, y: 55 });
         drawMountains(posMountains, 75, 200, "grey", "white");
@@ -37,8 +35,6 @@ namespace L_Endabgabe {
         drawTree6({ x: 15, y: 350 });
         drawTree7({ x: 1000, y: 200 }, { x: 2, y: 2 });
         drawBirdhouse({ x: 200, y: 400 });
-        //  drawstandingBird({ x: 340, y: 230 });
-        //  drawstandingBird1({ x: 240, y: 230 });
         crc2.save();
 
         image = crc2.getImageData(0, 0, canvas.width, canvas.height);
@@ -395,8 +391,6 @@ namespace L_Endabgabe {
         crc2.closePath();
 
     }
-
-
 
 
 }

@@ -29,13 +29,13 @@ export namespace L_Endabgabe {
     }
 
     async function connectToDataBase(_url: string): Promise<void> {
-        let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
+        let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true }; 
         let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(_url, options);
         await mongoClient.connect();
         highscores = mongoClient.db(dbName).collection(dbCollection);
         console.log("Database connection ", highscores != undefined);
     }
-//Anfrage
+
     async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise<void> {
         console.log("What's up?"); 
 
@@ -43,16 +43,16 @@ export namespace L_Endabgabe {
         _response.setHeader("Access-Control-Allow-Origin", "*");
 
         if (_request.url) {
-            let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
+            let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true); 
 
 
-            if (url.query["command"] == "retrieve") {
+            if (url.query["command"] == "retrieve") { 
                 let report: any[] | string = await retrieveOrders(); 
-                if (report == "null")
-                    _response.write(report);
+                if (report == "null") 
+                    _response.write(report); 
 
                 else
-                    _response.write(JSON.stringify(report));
+                    _response.write(JSON.stringify(report)); 
             }
             else {
                 console.log("urlQuery: ", url.query);
@@ -67,7 +67,7 @@ export namespace L_Endabgabe {
 
     async function retrieveOrders(): Promise<any[] | string> {
         
-        let cursor: Mongo.Cursor = await highscores.find().sort({score: -1}); 
+        let cursor: Mongo.Cursor = await highscores.find().sort({highScore: -1}); ///
         let answer: Promise<any[]> = await cursor.toArray(); 
         console.log("DB CursorToArray", answer);
         if (answer != null) {

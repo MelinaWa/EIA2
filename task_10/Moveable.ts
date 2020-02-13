@@ -14,7 +14,7 @@ namespace L_Endabgabe {
     
     }
 
-    public move(_timeslice: number): void {
+    public move(_timeslice: number): void { 
 
       let offset: Vector = this.velocity.copy();
   

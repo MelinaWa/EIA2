@@ -15,7 +15,7 @@ namespace L_Endabgabe {
 
             this.velocity = new Vector(0, Math.random() + 10);
             this.size = _size;
-            this.foodPosition = Math.floor(Math.random() * (400 - 600 + 1) + 400);
+            this.foodPosition = Math.floor(Math.random() * (500 - 700 - 1) + 500);
 
         }
 
@@ -37,7 +37,6 @@ namespace L_Endabgabe {
 
 
         }
-
 
 
 

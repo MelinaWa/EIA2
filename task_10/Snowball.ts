@@ -2,7 +2,7 @@ namespace L_Endabgabe {
 
     export class Snowball{
 
-        public position: Vector;
+        private position: Vector;
         public size: number;
 
         public constructor(_size: number, _position: Vector) {

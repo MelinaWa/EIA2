@@ -2,7 +2,6 @@ namespace L_Endabgabe {
 
     export enum TASK {
         FLY,
-        FLYTOFOOD,
         EAT
 
     }
@@ -24,7 +23,7 @@ namespace L_Endabgabe {
             console.log("Bird constructor");
 
 
-            this.position = new Vector(Math.random() * crc2.canvas.width, Math.floor(Math.random() * 400));
+            this.position = new Vector(Math.random() * crc2.canvas.width, Math.floor(Math.random() * 700));
 
 
             this.velocity = new Vector(Math.random() - 1 * 5, (Math.random() * 2 + Math.random() - 2));
@@ -38,14 +37,13 @@ namespace L_Endabgabe {
         public draw(): void {
 
 
-
             if (this.job == TASK.EAT) {
-               
-                setTimeout(() => {
+
+                setTimeout(() => { 
                     this.job = TASK.FLY;
-                    this.velocity = new Vector(Math.random() - 1 * 5, (Math.random() * 2) + Math.random() - 1);
-                    
-                }, 5000); 
+                    this.velocity = new Vector(Math.random() - 1 * 6, (Math.random() * 2) + Math.random() - 2);
+
+                }, 6000);
             }
 
             //body
@@ -56,11 +54,11 @@ namespace L_Endabgabe {
             //backward
             if (this.velocity.x >= 0.1) {
                 crc2.scale(-1, 1);
-                
+
             }//forward
             if (this.velocity.x <= -0.1) {
                 crc2.scale(1, 1);
-                
+
             }
 
             if (this.job != TASK.EAT) {
@@ -162,21 +160,21 @@ namespace L_Endabgabe {
         }
 
         public birdIsHit(_hotspot: Vector): boolean {
-            this.hitsize = 40; 
+            this.hitsize = 40;
             let difference: Vector = new Vector(_hotspot.x - this.position.x, _hotspot.y - this.position.y);
             return (Math.abs(difference.x) < this.hitsize && Math.abs(difference.y) < this.hitsize);
-            
+
 
 
         }
 
-        public isEating: Function = (): void => { // Sonderfall
+        public isEating: Function = (): void => { // Special case
             this.velocity = new Vector(0, 0);
 
         }
     }
 
-    function getRandomColor(): string { 
+    function getRandomColor(): string {
         let sequence = '0123456789ABCDEF'.split('');
         let color: string = "#";
         for (let i = 0; i < 6; i++) {

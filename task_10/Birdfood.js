@@ -7,7 +7,7 @@ var L_Endabgabe;
             console.log("Birdfood constructor");
             this.velocity = new L_Endabgabe.Vector(0, Math.random() + 10);
             this.size = _size;
-            this.foodPosition = Math.floor(Math.random() * (400 - 600 + 1) + 400);
+            this.foodPosition = Math.floor(Math.random() * (500 - 700 - 1) + 500);
         }
         draw() {
             L_Endabgabe.crc2.beginPath();
